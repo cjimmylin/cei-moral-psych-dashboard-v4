@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MPBench v4 — The Triple Bind</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Loading Splash -->
+  <div id="loading-splash" aria-live="polite">
+    <div class="loading-content">
+      <div class="loading-title">The Triple Bind</div>
+      <div class="loading-subtitle">Loading moral psychology benchmarks...</div>
+      <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark sticky-top">
+    <div class="container-fluid">
+      <span class="navbar-brand">
+        <strong>MPBench</strong> <span class="text-muted small">v4 — The Triple Bind</span>
+      </span>
+      <div class="d-flex align-items-center gap-2">
+        <button id="theme-toggle" class="btn btn-sm btn-outline-secondary" title="Toggle theme" aria-label="Toggle light/dark theme">
+          <span id="theme-icon">&#9788;</span>
+        </button>
+        <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#glossaryModal" title="Glossary" aria-label="Open glossary">
+          <span>Glossary</span>
+        </button>
+        <div class="dropdown">
+          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">Export</button>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="exportDropdown">
+            <li><a class="dropdown-item" href="#" id="export-feature-csv">Feature Matrix (CSV)</a></li>
+            <li><a class="dropdown-item" href="#" id="export-trials-csv">Trial Results (CSV)</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" id="export-data-json">Full Data (JSON)</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="printDropdown" data-bs-toggle="dropdown" aria-expanded="false">Print</button>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="printDropdown">
+            <li><a class="dropdown-item" href="#" id="print-current">Print Current Tab</a></li>
+            <li><a class="dropdown-item" href="#" id="print-all">Print All Tabs</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container-fluid px-4 mt-3">
+
+    <!-- Tab Navigation -->
+    <ul class="nav nav-pills mb-3" id="mainTabs" role="tablist">
+      <!-- Group 1: Story -->
+      <li class="nav-item d-flex align-items-center" aria-hidden="true"><span class="tab-group-label">Story</span></li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="tab-overview" data-bs-toggle="pill" data-bs-target="#pane-overview" type="button" role="tab" aria-controls="pane-overview" aria-selected="true">Overview</button>
+      </li>
+
+      <li class="nav-item d-flex align-items-center" aria-hidden="true"><span class="tab-separator"></span></li>
+
+      <!-- Group 2: Method -->
+      <li class="nav-item d-flex align-items-center" aria-hidden="true"><span class="tab-group-label">Method</span></li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-methodology" data-bs-toggle="pill" data-bs-target="#pane-methodology" type="button" role="tab" aria-controls="pane-methodology" aria-selected="false">Methodology</button>
+      </li>
+
+      <li class="nav-item d-flex align-items-center" aria-hidden="true"><span class="tab-separator"></span></li>
+
+      <!-- Group 3: Landscape -->
+      <li class="nav-item d-flex align-items-center" aria-hidden="true"><span class="tab-group-label">Landscape</span></li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-claims-1-3" data-bs-toggle="pill" data-bs-target="#pane-claims-1-3" type="button" role="tab" aria-controls="pane-claims-1-3" aria-selected="false">Claims 1-3</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-claims-4-6" data-bs-toggle="pill" data-bs-target="#pane-claims-4-6" type="button" role="tab" aria-controls="pane-claims-4-6" aria-selected="false">Claims 4-6</button>
+      </li>
+
+      <li class="nav-item d-flex align-items-center" aria-hidden="true"><span class="tab-separator"></span></li>
+
+      <!-- Group 4: Empirical -->
+      <li class="nav-item d-flex align-items-center" aria-hidden="true"><span class="tab-group-label">Empirical</span></li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-rlhf-fingerprint" data-bs-toggle="pill" data-bs-target="#pane-rlhf-fingerprint" type="button" role="tab" aria-controls="pane-rlhf-fingerprint" aria-selected="false">RLHF Fingerprint</button>
+      </li>
+
+      <li class="nav-item d-flex align-items-center" aria-hidden="true"><span class="tab-separator"></span></li>
+
+      <!-- Group 5: Synthesis -->
+      <li class="nav-item d-flex align-items-center" aria-hidden="true"><span class="tab-group-label">Synthesis</span></li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-integrated" data-bs-toggle="pill" data-bs-target="#pane-integrated" type="button" role="tab" aria-controls="pane-integrated" aria-selected="false">Integrated</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-discussion" data-bs-toggle="pill" data-bs-target="#pane-discussion" type="button" role="tab" aria-controls="pane-discussion" aria-selected="false">Discussion</button>
+      </li>
+
+      <li class="nav-item d-flex align-items-center" aria-hidden="true"><span class="tab-separator"></span></li>
+
+      <!-- Group 6: Data -->
+      <li class="nav-item d-flex align-items-center" aria-hidden="true"><span class="tab-group-label">Data</span></li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-ranking" data-bs-toggle="pill" data-bs-target="#pane-ranking" type="button" role="tab" aria-controls="pane-ranking" aria-selected="false">Ranking</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-features" data-bs-toggle="pill" data-bs-target="#pane-features" type="button" role="tab" aria-controls="pane-features" aria-selected="false">Features</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab-explorer" data-bs-toggle="pill" data-bs-target="#pane-explorer" type="button" role="tab" aria-controls="pane-explorer" aria-selected="false">Explorer</button>
+      </li>
+    </ul>
+
+    <!-- ===================================================================
+         TAB PANES
+         =================================================================== -->
+    <div class="tab-content" id="mainTabContent">
+
+      <!-- ===============================================================
+           TAB 1: OVERVIEW — Guided Narrative Tour
+           =============================================================== -->
+      <div class="tab-pane fade show active" id="pane-overview" role="tabpanel" aria-labelledby="tab-overview">
+
+        <!-- Hero section -->
+        <div class="narrative-hero text-center py-5 px-3">
+          <h1 class="display-5 fw-bold mb-3">What Do Moral Psychology Benchmarks Actually Test?</h1>
+          <p class="lead text-muted mb-4">A Triple Bind: Theoretically Narrow &middot; Empirically Undiscriminating &middot; Culturally Blind</p>
+          <div id="chart-triple-bind" style="height:400px; max-width:600px; margin:0 auto"></div>
+        </div>
+
+        <!-- Executive Summary (populated by app.js) -->
+        <div id="exec-summary" class="mb-4"></div>
+
+        <!-- KPI Cards (populated by app.js) -->
+        <div class="row g-3 mb-4" id="kpi-cards"></div>
+
+        <!-- Tour steps -->
+        <div class="narrative-steps" id="narrative-tour">
+
+          <!-- Step 1: Quality illusion -->
+          <div class="narrative-step" data-bind="narrow">
+            <div class="row g-4 align-items-center">
+              <div class="col-lg-5">
+                <span class="bind-badge bind-narrow">Bind 1: Narrow</span>
+                <h3 class="mt-2">292 benchmarks — but only 48 are fit for purpose</h3>
+                <p class="step-summary" id="ov-ann-tourStep1"></p>
+                <div class="step-detail collapse" id="ov-detail-tourStep1"></div>
+                <a class="btn btn-sm btn-outline-secondary mt-2" data-bs-toggle="collapse" href="#ov-detail-tourStep1" role="button">Read more</a>
+              </div>
+              <div class="col-lg-7">
+                <div id="chart-tier-donut" style="height:300px"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: MFT dominance -->
+          <div class="narrative-step" data-bind="narrow">
+            <div class="row g-4 align-items-center">
+              <div class="col-lg-5">
+                <span class="bind-badge bind-narrow">Bind 1: Narrow</span>
+                <h3 class="mt-2">MFT dominates the quality tiers at 73%</h3>
+                <p class="step-summary" id="ov-ann-tourStep2"></p>
+                <div class="step-detail collapse" id="ov-detail-tourStep2"></div>
+                <a class="btn btn-sm btn-outline-secondary mt-2" data-bs-toggle="collapse" href="#ov-detail-tourStep2" role="button">Read more</a>
+              </div>
+              <div class="col-lg-7">
+                <div id="chart-claim-sparks" style="height:250px"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Undiscriminating -->
+          <div class="narrative-step" data-bind="undiscrim">
+            <div class="row g-4 align-items-center">
+              <div class="col-lg-5">
+                <span class="bind-badge bind-undiscrim">Bind 2: Undiscriminating</span>
+                <h3 class="mt-2">30% of benchmarks show zero cross-vendor variation</h3>
+                <p class="step-summary" id="ov-ann-tourStep3"></p>
+                <div class="step-detail collapse" id="ov-detail-tourStep3"></div>
+                <a class="btn btn-sm btn-outline-secondary mt-2" data-bs-toggle="collapse" href="#ov-detail-tourStep3" role="button">Read more</a>
+              </div>
+              <div class="col-lg-7">
+                <div id="chart-convergence-mini" style="height:250px"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Culturally blind -->
+          <div class="narrative-step" data-bind="cultural">
+            <div class="row g-4 align-items-center">
+              <div class="col-lg-5">
+                <span class="bind-badge bind-cultural">Bind 3: Cultural Blind Spot</span>
+                <h3 class="mt-2">Non-Western traditions have 0% top-tier representation</h3>
+                <p class="step-summary" id="ov-ann-tourStep4"></p>
+                <div class="step-detail collapse" id="ov-detail-tourStep4"></div>
+                <a class="btn btn-sm btn-outline-secondary mt-2" data-bs-toggle="collapse" href="#ov-detail-tourStep4" role="button">Read more</a>
+              </div>
+              <div class="col-lg-7">
+                <div id="chart-cultural-mini" style="height:250px"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Claim cards -->
+        <h4 class="mt-5 mb-3">Seven Claims</h4>
+        <div class="row g-3" id="claim-cards-container"></div>
+
+        <!-- Recommendation cards -->
+        <h4 class="mt-5 mb-3">Seven Recommendations</h4>
+        <div class="row g-3" id="recommendation-cards-container"></div>
+
+        <!-- AI disclosure -->
+        <div class="ai-disclosure mt-4" id="ai-disclosure">
+          <strong>AI Disclosure:</strong> This dashboard was generated with Claude Code assistance. All data, analyses, and interpretations are from a systematic meta-evaluation of 292 moral psychology benchmarks. The underlying paper integrates perspectives from multiple disciplinary lenses. Dashboard data is pre-computed; no LLM inference occurs at render time.
+        </div>
+
+      </div>
+
+      <!-- ===============================================================
+           TAB 2: METHODOLOGY
+           =============================================================== -->
+      <div class="tab-pane fade" id="pane-methodology" role="tabpanel" aria-labelledby="tab-methodology">
+
+        <div class="mb-3" id="mt-ann-intro"></div>
+
+        <div class="row g-4 mb-4">
+          <div class="col-lg-7">
+            <div class="card">
+              <div class="card-header">Composite Score Distribution (292 Candidates)</div>
+              <div class="card-body">
+                <div id="chart-tier-histogram" style="height:400px"></div>
+                <div id="mt-ann-tierHistogram" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="card mb-3">
+              <div class="card-header">Scoring Formula</div>
+              <div class="card-body">
+                <div id="chart-scoring-formula" style="height:200px"></div>
+                <div id="mt-ann-scoringFormula" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">Tier Definitions</div>
+              <div class="card-body" id="tier-definitions"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-header">Nine-Model Cross-Vendor Inventory</div>
+          <div class="card-body">
+            <div id="chart-model-inventory" style="height:250px"></div>
+            <div id="mt-ann-modelInventory" class="annotation-block mt-3"></div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-header">17-Feature Scoring Dimensions</div>
+          <div class="card-body">
+            <div id="chart-feature-weights" style="height:350px"></div>
+            <div id="mt-ann-featureWeights" class="annotation-block mt-3"></div>
+          </div>
+        </div>
+
+        <!-- Scoring formula detail (populated by app.js) -->
+        <div id="methods-formula" class="mb-4"></div>
+
+        <!-- Model inventory cards (populated by app.js) -->
+        <div class="row g-3 mb-4" id="model-inventory-cards"></div>
+
+      </div>
+
+      <!-- ===============================================================
+           TAB 3: CLAIMS 1-3
+           =============================================================== -->
+      <div class="tab-pane fade" id="pane-claims-1-3" role="tabpanel" aria-labelledby="tab-claims-1-3">
+
+        <div class="mb-3" id="c13-ann-intro"></div>
+
+        <!-- Claim 1: MFT Quality Dominance -->
+        <div class="claim-section mb-5" data-claim="1">
+          <div class="claim-header">
+            <span class="bind-badge bind-narrow">Bind 1</span>
+            <h4>Claim 1: MFT Quality Dominance</h4>
+          </div>
+          <div id="c13-ann-claim1" class="annotation-block mb-3"></div>
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">Theory &times; Tier Quality Distribution</div>
+                <div class="card-body">
+                  <div id="chart-theory-tier-heatmap" style="height:450px"></div>
+                  <div id="c13-ann-theoryTier" class="annotation-block mt-3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="card">
+                <div class="card-header">Theory Quality Rate (% Top+High)</div>
+                <div class="card-body">
+                  <div id="chart-theory-quality-rate" style="height:450px"></div>
+                  <div id="c13-ann-qualityRate" class="annotation-block mt-3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Claim 2: Construct Validity Crisis -->
+        <div class="claim-section mb-5" data-claim="2">
+          <div class="claim-header">
+            <span class="bind-badge bind-narrow">Bind 1</span>
+            <h4>Claim 2: Construct Validity Crisis</h4>
+          </div>
+          <div id="c13-ann-claim2" class="annotation-block mb-3"></div>
+          <div class="row g-4">
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-header">Construct Validity Distribution (A6)</div>
+                <div class="card-body">
+                  <div id="chart-validity-dist" style="height:350px"></div>
+                  <div id="c13-ann-validityDist" class="annotation-block mt-3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-header">Validity by Theory</div>
+                <div class="card-body">
+                  <div id="chart-validity-theory" style="height:350px"></div>
+                  <div id="c13-ann-validityTheory" class="annotation-block mt-3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Claim 3: Theoretical Absence -->
+        <div class="claim-section mb-5" data-claim="3">
+          <div class="claim-header">
+            <span class="bind-badge bind-narrow">Bind 1</span>
+            <h4>Claim 3: Theoretical Absence</h4>
+          </div>
+          <div id="c13-ann-claim3" class="annotation-block mb-3"></div>
+          <div class="row g-4">
+            <div class="col-lg-7">
+              <div class="card">
+                <div class="card-header">Theoretical Absence by Quality Tier</div>
+                <div class="card-body">
+                  <div id="chart-theory-absence" style="height:300px"></div>
+                  <div id="c13-ann-theoryAbsence" class="annotation-block mt-3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="card">
+                <div class="card-header">Theory Coverage Heatmap</div>
+                <div class="card-body">
+                  <div id="chart-theory-heatmap" style="height:300px"></div>
+                  <div id="c13-ann-theoryHeatmap" class="annotation-block mt-3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===============================================================
+           TAB 4: CLAIMS 4-6
+           =============================================================== -->
+      <div class="tab-pane fade" id="pane-claims-4-6" role="tabpanel" aria-labelledby="tab-claims-4-6">
+
+        <div class="mb-3" id="c46-ann-intro"></div>
+
+        <!-- Claim 4: Cultural Quality Cliff -->
+        <div class="claim-section mb-5" data-claim="4">
+          <div class="claim-header">
+            <span class="bind-badge bind-cultural">Bind 3</span>
+            <h4>Claim 4: Cultural Quality Cliff</h4>
+          </div>
+          <div id="c46-ann-claim4" class="annotation-block mb-3"></div>
+          <div class="row g-4">
+            <div class="col-lg-7">
+              <div class="card">
+                <div class="card-header">Western vs Non-Western Quality Rates</div>
+                <div class="card-body">
+                  <div id="chart-cultural-cliff" style="height:400px"></div>
+                  <div id="c46-ann-culturalCliff" class="annotation-block mt-3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="card">
+                <div class="card-header">Cultural Coverage Breakdown</div>
+                <div class="card-body">
+                  <div id="chart-cultural-breakdown" style="height:400px"></div>
+                  <div id="c46-ann-culturalBreakdown" class="annotation-block mt-3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Claim 5: Baseline Deficit -->
+        <div class="claim-section mb-5" data-claim="5">
+          <div class="claim-header">
+            <span class="bind-badge bind-narrow">Bind 1</span>
+            <h4>Claim 5: Baseline Deficit</h4>
+          </div>
+          <div id="c46-ann-claim5" class="annotation-block mb-3"></div>
+          <div class="card">
+            <div class="card-header">Human Baseline Availability by Tier</div>
+            <div class="card-body">
+              <div id="chart-baseline-by-tier" style="height:350px"></div>
+              <div id="c46-ann-baselineTier" class="annotation-block mt-3"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Claim 6: Temporal Stagnation -->
+        <div class="claim-section mb-5" data-claim="6">
+          <div class="claim-header">
+            <span class="bind-badge bind-narrow">Bind 1</span>
+            <h4>Claim 6: Temporal Stagnation</h4>
+          </div>
+          <div id="c46-ann-claim6" class="annotation-block mb-3"></div>
+          <div class="row g-4">
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-header">Quality Rate Over Time</div>
+                <div class="card-body">
+                  <div id="chart-temporal-quality" style="height:300px"></div>
+                  <div id="c46-ann-temporalQuality" class="annotation-block mt-3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-header">Hidden Gems</div>
+                <div class="card-body" id="hidden-gems-container"></div>
+                <div id="c46-ann-hiddenGems" class="annotation-block mt-3 px-3 pb-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===============================================================
+           TAB 5: RLHF FINGERPRINT
+           =============================================================== -->
+      <div class="tab-pane fade" id="pane-rlhf-fingerprint" role="tabpanel" aria-labelledby="tab-rlhf-fingerprint">
+
+        <div class="mb-3" id="rf-ann-intro"></div>
+
+        <!-- Claim 7 header -->
+        <div class="claim-section mb-4" data-claim="7">
+          <div class="claim-header">
+            <span class="bind-badge bind-undiscrim">Bind 2</span>
+            <h4>Claim 7: RLHF Convergence &amp; Behavioural Signatures</h4>
+          </div>
+          <div id="rf-ann-claim7" class="annotation-block mb-3"></div>
+        </div>
+
+        <!-- KPI row -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-3">
+            <div class="kpi-card card">
+              <div class="card-body text-center">
+                <div class="kpi-value" id="kpi-zero-cv" style="color:var(--bind-undiscrim)">--</div>
+                <div class="kpi-label">Zero-CV Benchmarks</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="kpi-card card">
+              <div class="card-body text-center">
+                <div class="kpi-value" id="kpi-models-tested" style="color:var(--oi-green)">9</div>
+                <div class="kpi-label">Models Tested</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="kpi-card card">
+              <div class="card-body text-center">
+                <div class="kpi-value" id="kpi-vendors" style="color:var(--oi-orange)">3</div>
+                <div class="kpi-label">Vendors</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="kpi-card card">
+              <div class="card-body text-center">
+                <div class="kpi-value" id="kpi-rlhf-signatures" style="color:var(--bind-narrow)">6</div>
+                <div class="kpi-label">RLHF Signatures</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 1: Convergence + Radar -->
+        <div class="row g-4 mb-4">
+          <div class="col-lg-7">
+            <div class="card">
+              <div class="card-header">Cross-Vendor Coefficient of Variation (23 Benchmarks)</div>
+              <div class="card-body">
+                <div id="chart-convergence-cv" style="height:500px"></div>
+                <div id="rf-ann-convergenceCV" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="card">
+              <div class="card-header">Vendor Moral Profile Radar</div>
+              <div class="card-body">
+                <div id="chart-rlhf-radar" style="height:400px"></div>
+                <div id="rf-ann-rlhfRadar" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: DIT + CoT -->
+        <div class="row g-4 mb-4">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">DIT P-Score by Model (Scale-Dependent Divergence)</div>
+              <div class="card-body">
+                <div id="chart-dit-pscore" style="height:350px"></div>
+                <div id="rf-ann-ditPscore" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">Chain-of-Thought Effect on Moral Reasoning</div>
+              <div class="card-body">
+                <div id="chart-cot-effect" style="height:350px"></div>
+                <div id="rf-ann-cotEffect" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: MFT Profiles + Cultural Persona -->
+        <div class="row g-4 mb-4">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">MFT Foundation Profiles by Model</div>
+              <div class="card-body">
+                <div id="chart-mft-profiles" style="height:400px"></div>
+                <div id="rf-ann-mftProfiles" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">Cultural Persona Response Patterns</div>
+              <div class="card-body">
+                <div id="chart-cultural-persona" style="height:400px"></div>
+                <div id="rf-ann-culturalPersona" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Ceiling + Discriminating -->
+        <div class="row g-4 mb-4">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">Ceiling-Effect Instruments (Zero Discrimination)</div>
+              <div class="card-body">
+                <div id="chart-ceiling-instruments" style="height:300px"></div>
+                <div id="rf-ann-ceilingInstruments" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">Discriminating Instruments (High CV)</div>
+              <div class="card-body">
+                <div id="chart-discriminating-instruments" style="height:300px"></div>
+                <div id="rf-ann-discriminatingInstruments" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RLHF Signatures (populated by app.js) -->
+        <div id="rlhf-signatures-container" class="mb-4"></div>
+
+        <!-- Cross-Vendor Trial Table -->
+        <div class="card mb-4">
+          <div class="card-header">Cross-Vendor Trial Results</div>
+          <div class="card-body p-0">
+            <div class="ranking-table-wrap">
+              <table class="table table-sm table-hover mb-0">
+                <thead id="cv-trial-table-head"></thead>
+                <tbody id="cv-trial-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===============================================================
+           TAB 6: INTEGRATED FINDINGS
+           =============================================================== -->
+      <div class="tab-pane fade" id="pane-integrated" role="tabpanel" aria-labelledby="tab-integrated">
+
+        <div class="mb-3" id="ig-ann-intro"></div>
+
+        <!-- THE KEY CHART: Quality-Discrimination Paradox -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <span class="bind-badge bind-undiscrim me-2">Key Finding</span>
+            Quality-Discrimination Paradox (r = -0.83)
+          </div>
+          <div class="card-body">
+            <div class="key-finding mb-3">
+              <div class="key-stat" style="color:var(--bind-narrow)">r = -0.83</div>
+              <div class="key-desc">Higher-quality benchmarks are <em>less</em> able to discriminate between models. The better we measure, the more alike the models appear.</div>
+            </div>
+            <div id="chart-tier-discrimination" style="height:450px"></div>
+            <div id="ig-ann-tierDiscrim" class="annotation-block mt-3"></div>
+          </div>
+        </div>
+
+        <!-- Row: Pipeline + Infrastructure -->
+        <div class="row g-4 mb-4">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">Evaluation Pipeline Flow</div>
+              <div class="card-body">
+                <div id="chart-pipeline-diagram" style="height:400px"></div>
+                <div id="ig-ann-pipeline" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header">Theory &times; Infrastructure Assets</div>
+              <div class="card-body">
+                <div id="chart-infrastructure-bar" style="height:400px"></div>
+                <div id="ig-ann-infraBar" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feedback Loop -->
+        <div class="card mb-4">
+          <div class="card-header">The Triple Bind Feedback Loop</div>
+          <div class="card-body">
+            <div id="chart-feedback-loop" style="height:400px"></div>
+            <div id="ig-ann-feedbackLoop" class="annotation-block mt-3"></div>
+          </div>
+        </div>
+
+        <!-- Feedback loop cards (populated by app.js) -->
+        <div id="feedback-loop-cards" class="mb-4"></div>
+
+        <!-- Infrastructure pipeline cards (populated by app.js) -->
+        <div id="infrastructure-pipeline-cards" class="mb-4"></div>
+
+      </div>
+
+      <!-- ===============================================================
+           TAB 7: DISCUSSION & RECOMMENDATIONS
+           =============================================================== -->
+      <div class="tab-pane fade" id="pane-discussion" role="tabpanel" aria-labelledby="tab-discussion">
+
+        <div class="mb-3" id="ds-ann-intro"></div>
+
+        <!-- Triple bind summary -->
+        <div class="card mb-4">
+          <div class="card-header">Triple Bind Summary</div>
+          <div class="card-body">
+            <div id="chart-triple-bind-summary" style="height:300px"></div>
+            <div id="ds-ann-bindSummary" class="annotation-block mt-3"></div>
+          </div>
+        </div>
+
+        <!-- Discussion themes -->
+        <h5 class="mb-3">Discussion Themes</h5>
+        <div id="discussion-themes"></div>
+        <div id="ds-ann-themes" class="annotation-block mt-3"></div>
+
+        <!-- Recommendations (detailed) -->
+        <h5 class="mt-4 mb-3">Recommendations</h5>
+        <div class="row g-3" id="discussion-recs-container"></div>
+        <div id="ds-ann-recommendations" class="annotation-block mt-3"></div>
+
+      </div>
+
+      <!-- ===============================================================
+           TAB 8: FULL RANKING
+           =============================================================== -->
+      <div class="tab-pane fade" id="pane-ranking" role="tabpanel" aria-labelledby="tab-ranking">
+
+        <div class="mb-3" id="rk-ann-intro"></div>
+
+        <!-- Ranking KPI (populated by app.js) -->
+        <div class="row g-3 mb-3" id="ranking-kpi"></div>
+
+        <!-- Filters -->
+        <div class="row g-3 mb-3 align-items-end">
+          <div class="col-auto">
+            <label for="ranking-tier-filter" class="form-label small fw-bold">Tier</label>
+            <select id="ranking-tier-filter" class="form-select form-select-sm ranking-filter-input">
+              <option value="all" selected>All Tiers</option>
+              <option value="top">Top</option>
+              <option value="high">High</option>
+              <option value="med">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          <div class="col-auto">
+            <label for="ranking-theory-filter" class="form-label small fw-bold">Theory</label>
+            <select id="ranking-theory-filter" class="form-select form-select-sm ranking-filter-input">
+              <option value="all" selected>All Theories</option>
+            </select>
+          </div>
+          <div class="col-auto">
+            <label for="ranking-search" class="form-label small fw-bold">Search</label>
+            <input id="ranking-search" type="text" class="form-control form-control-sm ranking-filter-input" placeholder="Search benchmarks...">
+          </div>
+          <div class="col-auto">
+            <span class="small text-muted" id="ranking-count">Showing 292 of 292</span>
+          </div>
+        </div>
+
+        <!-- Ranking table -->
+        <div class="card">
+          <div class="card-body p-0">
+            <div class="ranking-table-wrap">
+              <table class="table table-sm table-hover ranking-table mb-0">
+                <thead>
+                  <tr>
+                    <th class="sortable" data-sort="rank">#</th>
+                    <th class="sortable" data-sort="name">Benchmark</th>
+                    <th class="sortable" data-sort="year">Year</th>
+                    <th class="sortable" data-sort="theory">Theory</th>
+                    <th class="sortable" data-sort="tier">Tier</th>
+                    <th class="sortable" data-sort="composite">Composite</th>
+                    <th class="sortable" data-sort="validity">A6 Validity</th>
+                    <th class="sortable" data-sort="baseline">A5 Baseline</th>
+                    <th class="sortable" data-sort="culture">A7 Culture</th>
+                    <th class="sortable" data-sort="citations">C1 Cites</th>
+                  </tr>
+                </thead>
+                <tbody id="ranking-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail panel -->
+        <div class="card mt-3 d-none" id="ranking-detail-panel">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span id="ranking-detail-title">Benchmark Detail</span>
+            <button class="btn btn-sm btn-outline-secondary" id="ranking-detail-close">Close</button>
+          </div>
+          <div class="card-body" id="ranking-detail-body"></div>
+        </div>
+
+        <div id="rk-ann-table" class="annotation-block mt-3"></div>
+
+      </div>
+
+      <!-- ===============================================================
+           TAB 9: FEATURE MATRIX
+           =============================================================== -->
+      <div class="tab-pane fade" id="pane-features" role="tabpanel" aria-labelledby="tab-features">
+
+        <div class="mb-3" id="fm-ann-intro"></div>
+
+        <!-- Filters -->
+        <div class="row g-3 mb-3 align-items-end">
+          <div class="col-auto">
+            <label for="feature-tier-filter" class="form-label small fw-bold">Tier</label>
+            <select id="feature-tier-filter" class="form-select form-select-sm ranking-filter-input">
+              <option value="top" selected>Top Tier (48)</option>
+              <option value="high">High Tier (89)</option>
+              <option value="med">Med Tier (72)</option>
+              <option value="low">Low Tier (83)</option>
+              <option value="all">All (292)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">Feature Matrix — 17 Scoring Dimensions</div>
+          <div class="card-body p-0">
+            <div class="feature-table-wrap">
+              <table class="table table-sm table-hover mb-0" id="feature-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Benchmark</th>
+                    <th>Year</th>
+                    <th>Theories</th>
+                    <th>A2</th>
+                    <th>A5</th>
+                    <th>A6</th>
+                    <th>A7</th>
+                    <th>B1</th>
+                    <th>B2</th>
+                    <th>B10</th>
+                    <th>B10f</th>
+                    <th>C1</th>
+                    <th>PD</th>
+                    <th>PE</th>
+                    <th>CI</th>
+                    <th>Composite</th>
+                  </tr>
+                </thead>
+                <tbody id="feature-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="small text-muted mt-2" id="feature-table-count"></div>
+        <div id="fm-ann-table" class="annotation-block mt-3"></div>
+
+      </div>
+
+      <!-- ===============================================================
+           TAB 10: DATA EXPLORER
+           =============================================================== -->
+      <div class="tab-pane fade" id="pane-explorer" role="tabpanel" aria-labelledby="tab-explorer">
+
+        <div class="mb-3" id="ex-ann-intro"></div>
+
+        <!-- Explorer sub-tabs -->
+        <ul class="nav subtab-pills mb-3" id="explorerSubTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="subtab-structure" data-bs-toggle="pill" data-bs-target="#explorer-structure" type="button" role="tab">Feature Structure</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="subtab-landscape" data-bs-toggle="pill" data-bs-target="#explorer-landscape" type="button" role="tab">Landscape</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="subtab-health" data-bs-toggle="pill" data-bs-target="#explorer-health" type="button" role="tab">Health</button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="explorerSubContent">
+
+          <!-- Feature Structure -->
+          <div class="tab-pane fade show active" id="explorer-structure" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-header">Scree Plot — Feature Variance Explained</div>
+                  <div class="card-body">
+                    <div id="chart-scree" style="height:350px"></div>
+                    <div id="ex-ann-scree" class="annotation-block mt-3"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-header">Feature Importance (Composite Contribution)</div>
+                  <div class="card-body">
+                    <div id="chart-feature-importance" style="height:350px"></div>
+                    <div id="ex-ann-featImportance" class="annotation-block mt-3"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Landscape -->
+          <div class="tab-pane fade" id="explorer-landscape" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-lg-7">
+                <div class="card">
+                  <div class="card-header">UMAP Projection — 292 Benchmarks</div>
+                  <div class="card-body">
+                    <div id="chart-umap" style="height:500px"></div>
+                    <div id="ex-ann-umap" class="annotation-block mt-3"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-5">
+                <div class="card">
+                  <div class="card-header">Theory Treemap</div>
+                  <div class="card-body">
+                    <div id="chart-treemap" style="height:500px"></div>
+                    <div id="ex-ann-treemap" class="annotation-block mt-3"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Health -->
+          <div class="tab-pane fade" id="explorer-health" role="tabpanel">
+            <div class="card mb-4">
+              <div class="card-header">Field Health Scorecard</div>
+              <div class="card-body">
+                <div id="chart-health-scorecard" style="height:400px"></div>
+                <div id="ex-ann-health" class="annotation-block mt-3"></div>
+              </div>
+            </div>
+            <div id="health-scorecard" class="mb-4"></div>
+            <div class="row g-3 mt-3" id="health-metrics-container"></div>
+            <div id="redundancy-cards" class="mb-4"></div>
+            <div id="archetype-cards" class="mb-4"></div>
+            <div class="card mb-4">
+              <div class="card-header">Gap Analysis</div>
+              <div class="card-body p-0">
+                <div class="ranking-table-wrap">
+                  <table class="table table-sm table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th>Theory</th>
+                        <th>Gap</th>
+                        <th>Priority</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody id="gap-table-body"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ===================================================================
+         PROVENANCE FOOTER
+         =================================================================== -->
+    <footer class="provenance-footer py-3 mt-4 mb-3">
+      <div class="row">
+        <div class="col-md-4">
+          <strong>Data Provenance:</strong> 292 benchmarks screened from 2,043-paper corpus. Composite scores computed via 17-feature weighted formula. Jenks natural-breaks classification into 4 tiers. Cross-vendor trials on 9 models from 3 vendors (Anthropic, OpenAI, Google).
+        </div>
+        <div class="col-md-4">
+          <strong>Methodology:</strong> All analytics pre-computed in Python. Browser performs zero computation. ECharts renders from <code class="font-mono">data.js</code> constants. Dashboard is a static snapshot.
+        </div>
+        <div class="col-md-4">
+          <strong>Citation:</strong> Lin, J. (2026). <em>The Triple Bind: A Meta-Evaluation of Moral Psychology Benchmarks for Large Language Models.</em>
+          <br><a href="https://github.com/cjimmylin/cei-moral-psych-dashboard" target="_blank" rel="noopener">GitHub Repository</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ===================================================================
+       GLOSSARY MODAL
+       =================================================================== -->
+  <div class="modal fade" id="glossaryModal" tabindex="-1" aria-labelledby="glossaryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content" style="background:var(--bg-card); color:var(--text-primary); border-color:var(--border-color);">
+        <div class="modal-header" style="border-color:var(--border-color);">
+          <h5 class="modal-title" id="glossaryModalLabel">Glossary of Terms</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-sm glossary-table" id="glossary-table">
+            <thead>
+              <tr><th style="width:25%">Term</th><th>Definition</th></tr>
+            </thead>
+            <tbody id="glossary-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       SCRIPTS
+       =================================================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
