@@ -881,40 +881,41 @@
     var gems = DATA.hiddenGems.gems || DATA.hiddenGems;
     if (!gems || !gems.length) return;
 
+    // Compact list layout (fits narrow sidebar)
     var frag = document.createDocumentFragment();
-    gems.forEach(function (gem) {
-      var col = document.createElement('div');
-      col.className = 'col-md-4 col-lg-3';
+    var list = document.createElement('div');
+    list.className = 'gem-list';
+    gems.forEach(function (gem, i) {
+      var item = document.createElement('div');
+      item.className = 'gem-item d-flex align-items-start gap-2 mb-2 pb-2';
+      if (i < gems.length - 1) item.style.borderBottom = '1px solid var(--border-color, #2a2a4a)';
 
-      var card = document.createElement('div');
-      card.className = 'card card-dark gem-card h-100';
+      var score = document.createElement('span');
+      score.className = 'badge badge-top fw-bold';
+      score.style.fontSize = '0.85rem';
+      score.style.minWidth = '48px';
+      score.textContent = gem.composite;
+      item.appendChild(score);
 
-      var body = document.createElement('div');
-      body.className = 'card-body';
+      var info = document.createElement('div');
+      info.className = 'small';
+      var shortTitle = gem.title.length > 50 ? gem.title.substring(0, 47) + '...' : gem.title;
+      var titleSpan = document.createElement('strong');
+      titleSpan.textContent = shortTitle;
+      titleSpan.title = gem.title;
+      info.appendChild(titleSpan);
 
-      var scoreDiv = document.createElement('div');
-      scoreDiv.className = 'composite-score';
-      scoreDiv.textContent = gem.composite;
-      body.appendChild(scoreDiv);
-
-      var titleEl = document.createElement('h6');
-      titleEl.className = 'card-title mt-2';
-      titleEl.textContent = gem.title;
-      body.appendChild(titleEl);
-
-      var detailP = document.createElement('p');
-      detailP.className = 'card-text text-muted small';
-
+      var meta = document.createElement('div');
+      meta.className = 'text-muted';
+      meta.style.fontSize = '0.75rem';
       var theories = Array.isArray(gem.theories) ? gem.theories.join(', ') : (gem.theories || '');
-      detailP.appendChild(document.createTextNode(gem.year + ' \u00B7 ' + theories));
-      detailP.appendChild(document.createElement('br'));
-      detailP.appendChild(document.createTextNode('PD: ' + gem.PD + ' \u00B7 PE: ' + gem.PE + ' \u00B7 CI: ' + gem.CI));
-      body.appendChild(detailP);
+      meta.textContent = gem.year + ' \u00B7 ' + theories;
+      info.appendChild(meta);
 
-      card.appendChild(body);
-      col.appendChild(card);
-      frag.appendChild(col);
+      item.appendChild(info);
+      list.appendChild(item);
     });
+    frag.appendChild(list);
 
     container.textContent = '';
     container.appendChild(frag);
