@@ -2083,6 +2083,7 @@
   // =========================================================================
 
   function init() {
+    try {
     ThemeManager.init();
 
     // Executive summary & KPI
@@ -2153,7 +2154,10 @@
     // Glossary (must run after all rendering)
     applyGlossary();
 
-    // Hide loading splash
+    } catch (e) {
+      console.error('[MPBench v4] Init error:', e);
+    }
+    // Hide loading splash (always, even on error)
     var splash = document.getElementById('loading-splash');
     if (splash) splash.classList.add('hidden');
   }
