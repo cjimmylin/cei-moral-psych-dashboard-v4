@@ -77,6 +77,10 @@
       if (el) charts.push(chartTierDonut(el));
       el = document.getElementById('chart-claim-sparks');
       if (el) charts.push(chartClaimSparks(el));
+      el = document.getElementById('chart-convergence-mini');
+      if (el) charts.push(chartConvergenceCV(el));
+      el = document.getElementById('chart-cultural-mini');
+      if (el) charts.push(chartCulturalCliff(el));
       return charts;
     },
 
@@ -89,6 +93,8 @@
       if (el) charts.push(chartScoringFormula(el));
       el = document.getElementById('chart-model-inventory');
       if (el) charts.push(chartModelInventory(el));
+      el = document.getElementById('chart-feature-weights');
+      if (el) charts.push(chartScoringFormula(el));
       return charts;
     },
 
@@ -101,8 +107,12 @@
       if (el) charts.push(chartTheoryQualityRate(el));
       el = document.getElementById('chart-validity-dist');
       if (el) charts.push(chartValidityDist(el));
+      el = document.getElementById('chart-validity-theory');
+      if (el) charts.push(chartTheoryCoverage(el));
       el = document.getElementById('chart-theory-absence');
       if (el) charts.push(chartTheoryAbsence(el));
+      el = document.getElementById('chart-theory-heatmap');
+      if (el) charts.push(chartTheoryTierHeatmap(el));
       return charts;
     },
 
@@ -111,6 +121,8 @@
       var el;
       el = document.getElementById('chart-cultural-cliff');
       if (el) charts.push(chartCulturalCliff(el));
+      el = document.getElementById('chart-cultural-breakdown');
+      if (el) charts.push(chartTheoryCoverage(el));
       el = document.getElementById('chart-baseline-by-tier');
       if (el) charts.push(chartBaselineByTier(el));
       el = document.getElementById('chart-temporal-quality');
