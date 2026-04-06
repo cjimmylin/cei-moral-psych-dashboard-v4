@@ -871,6 +871,54 @@
   }
 
   // =========================================================================
+  // 10b. Discussion Recommendations
+  // =========================================================================
+
+  function renderDiscussionRecs() {
+    var container = document.getElementById('discussion-recs-container');
+    if (!container || !DATA.recommendationCards) return;
+
+    var priorityColors = { Critical: '#e94560', High: '#E69F00', Medium: '#F0E442' };
+    var frag = document.createDocumentFragment();
+
+    DATA.recommendationCards.forEach(function (rec) {
+      var col = document.createElement('div');
+      col.className = 'col-md-6 col-lg-4';
+
+      var card = document.createElement('div');
+      card.className = 'card card-dark h-100';
+      card.style.borderLeft = '3px solid ' + (priorityColors[rec.priority] || '#666');
+
+      var body = document.createElement('div');
+      body.className = 'card-body';
+
+      var header = document.createElement('div');
+      header.className = 'd-flex align-items-start mb-2';
+      var numBadge = document.createElement('span');
+      numBadge.className = 'badge me-2';
+      numBadge.style.background = priorityColors[rec.priority] || '#666';
+      numBadge.textContent = 'R' + rec.number;
+      header.appendChild(numBadge);
+      var titleEl = document.createElement('strong');
+      titleEl.textContent = rec.title;
+      header.appendChild(titleEl);
+      body.appendChild(header);
+
+      var desc = document.createElement('p');
+      desc.className = 'small text-muted mb-0';
+      desc.textContent = rec.description || '';
+      body.appendChild(desc);
+
+      card.appendChild(body);
+      col.appendChild(card);
+      frag.appendChild(col);
+    });
+
+    container.textContent = '';
+    container.appendChild(frag);
+  }
+
+  // =========================================================================
   // 11. Hidden Gems
   // =========================================================================
 
@@ -1099,7 +1147,7 @@
 
       var nameEl = document.createElement('div');
       nameEl.className = 'fw-bold';
-      nameEl.textContent = m.name || m;
+      nameEl.textContent = m.display || m.name || m;
       body.appendChild(nameEl);
 
       if (m.vendor) {
@@ -2129,6 +2177,7 @@
 
     // Discussion tab
     renderDiscussionThemes();
+    renderDiscussionRecs();
 
     // Feature table
     renderFeatureTable();

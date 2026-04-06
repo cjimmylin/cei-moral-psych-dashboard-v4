@@ -1068,7 +1068,8 @@ function chartTripleBindSummary(el) {
   var data = [];
   rows.forEach(function (_, ri) {
     cols.forEach(function (_, ci) {
-      data.push([ci, ri, cellData[ri][ci]]);
+      // ECharts heatmap requires numeric value (index 2) to render cells
+      data.push([ci, ri, ri]);
     });
   });
 
@@ -1076,18 +1077,19 @@ function chartTripleBindSummary(el) {
 
   chart.setOption({
     tooltip: { formatter: function (p) {
-      return rows[p.value[1]] + ' / ' + cols[p.value[0]] + ':<br/>' + p.value[2].replace(/\n/g, ' ');
+      var ri = p.value[1], ci = p.value[0];
+      return rows[ri] + ' / ' + cols[ci] + ':<br/>' + cellData[ri][ci].replace(/\n/g, ' ');
     }},
-    grid: { left: 140, right: 20, top: 10, bottom: 40 },
+    grid: { left: 140, right: 20, top: 40, bottom: 10 },
     xAxis: { type: 'category', data: cols, position: 'top',
              axisLabel: { color: TEXT_COLOR, fontSize: 12, fontWeight: 'bold' }, axisTick: { show: false },
              splitLine: { show: true, lineStyle: { color: GRID_COLOR } } },
-    yAxis: { type: 'category', data: rows,
+    yAxis: { type: 'category', data: rows, inverse: true,
              axisLabel: { color: TEXT_COLOR, fontSize: 12, fontWeight: 'bold' },
              splitLine: { show: true, lineStyle: { color: GRID_COLOR } } },
     series: [{
       type: 'heatmap', data: data,
-      label: { show: true, formatter: function (p) { return p.value[2]; },
+      label: { show: true, formatter: function (p) { return cellData[p.value[1]][p.value[0]]; },
                color: '#fff', fontSize: 10, lineHeight: 14 },
       itemStyle: { borderColor: '#1c2128', borderWidth: 2 },
       emphasis: { itemStyle: { shadowBlur: 6 } }
@@ -1100,7 +1102,7 @@ function chartTripleBindSummary(el) {
           'rgba(204,121,167,0.35)' // cultural
         ]
       },
-      dimension: 1
+      dimension: 2
     }
   });
   return chart;
