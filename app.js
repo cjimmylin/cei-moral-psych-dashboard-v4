@@ -1988,7 +1988,7 @@
   // =========================================================================
 
   function setupTabs() {
-    var tabEls = document.querySelectorAll('[data-bs-toggle="tab"]');
+    var tabEls = document.querySelectorAll('[data-bs-toggle="tab"], [data-bs-toggle="pill"]');
     tabEls.forEach(function (tabEl) {
       tabEl.addEventListener('hidden.bs.tab', function (e) {
         var oldPane = e.target.getAttribute('data-bs-target');
