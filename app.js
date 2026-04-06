@@ -1292,7 +1292,7 @@
 
     rankingState.filteredRows = rows.filter(function (r) {
       if (searchVal && r.title.toLowerCase().indexOf(searchVal) === -1) return false;
-      if (theoryVal && r.theories.indexOf(theoryVal) === -1) return false;
+      if (theoryVal && theoryVal !== 'all' && r.theories.indexOf(theoryVal) === -1) return false;
       if (tierVal && tierVal !== 'all' && r.tier !== tierVal) return false;
       return true;
     });
