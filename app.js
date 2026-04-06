@@ -2061,6 +2061,16 @@
         var paneId = newPane.replace('#', '');
         initCharts(paneId);
 
+        // Resize charts in sub-tab panes (e.g., Explorer sub-tabs)
+        // Charts initialized in a hidden sub-tab have zero-size canvases
+        var subPane = document.getElementById(paneId);
+        if (subPane) {
+          subPane.querySelectorAll('[_echarts_instance_]').forEach(function (el) {
+            var inst = echarts.getInstanceByDom(el);
+            if (inst && !inst.isDisposed()) inst.resize();
+          });
+        }
+
         // Lazy-init ranking table when first shown
         if (paneId === 'pane-ranking') initPaperRanking();
 
