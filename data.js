@@ -20479,355 +20479,417 @@ const DATA = {
     ]
   },
   "tabAnnotations": {
-    "ov": {
-      "intro": {
-        "title": "The Triple Bind: A Guided Tour",
-        "summary": "This dashboard presents the first full-coverage meta-evaluation of 292 moral psychology benchmark candidates for LLMs. The guided tour walks through the triple bind: theoretical narrowness, empirical undiscrimination, and cultural blindness."
-      },
-      "tourStep1": {
-        "summary": "The field has produced 292 moral psychology benchmark candidates since 2018, but when all are assessed through a 162-feature quality framework and classified via Jenks natural breaks, only 48 (16.4%) are publication-ready. The volume creates an illusion of progress that masks stagnation.",
-        "detail": "When all 292 candidates are assessed on a 162-feature characterization framework with 17 composite-determining features organized into assessment tiers A through C, and classified via Jenks natural breaks optimization (GVF = 0.83, break points at 27.8, 43.0, and 56.6), the distribution is sobering. Only 48 candidates (16.4%) achieve the Top tier—the level at which a benchmark possesses sufficient construct validity, human baselines, psychometric grounding, and operationalization quality to support publication-ready claims about LLM moral cognition. The remaining 155 candidates (53.1%)—a majority of the landscape—fall into the Medium or Low tiers, where fundamental quality requirements remain unmet. The quality distribution would be less concerning if it showed improvement over time. It does not: quality has declined from 75% (pre-2020) to 46% (2023–2026) despite a 9.5-fold increase in volume.",
-        "member": "Psychometric methodology perspective"
-      },
-      "tourStep2": {
-        "summary": "MFT achieves a 73% top+high quality rate—6 times the rate of non-Western traditions. The dominance is quality concentration, not just volume. MFQ-30 plus MFTC create a dual-asset flywheel that no other theory can match.",
-        "detail": "Moral Foundations Theory accounts for 67 of 292 candidates (23% by volume) but achieves the highest quality rate of any theory at 73% top + high tier. This dominance reflects MFT’s unique position at the intersection of two computational advantages: a standardized, freely available questionnaire with published population norms spanning political orientations and cultural groups (the MFQ-30; Graham et al., 2011), and a large expert-annotated text corpus that enables corpus-based NLP approaches (the MFTC, 35,108 labeled tweets; Hoover et al., 2020). These infrastructure advantages mean that building an MFT benchmark requires less foundational psychometric work than building a benchmark for any other theory—a starting-cost asymmetry that compounds over iterative research cycles. The flywheel is self-reinforcing: more MFT benchmarks generate more MFT data, which makes building more MFT benchmarks easier, widening the gap with each iteration.",
-        "member": "Philosophy of science perspective"
-      },
-      "tourStep3": {
-        "summary": "43% of benchmarks produce zero cross-model variation across 9 models from 3 vendors. All models share 6 universal RLHF moral signatures—a moral fingerprint with no precedent in any documented human population.",
-        "detail": "When 23 benchmarks were administered to nine models from three independent vendors (Anthropic, Google, OpenAI), ten benchmarks (43%) produced identical scores for every model regardless of vendor, architecture, or parameter count. The median coefficient of variation across all 23 benchmarks is approximately 2.1%, which in cross-cultural psychology would indicate measurement of a universal constant, not a differentiating trait. All nine models share six universal moral signatures: a WEIRD-liberal moral foundation bias (Ind/Bind ratios of 2.43–2.83), a purity floor (functionally zero, below any documented human population), authority deference suppression (win rate of exactly 0.29), an ethical consistency ceiling (ECI = 1.0), a post-conventional reasoning default (DIT P-scores of 60–90), and a deontological refusal asymmetry. From the perspective of moral psychology measurement, switching from Claude Opus to Gemini 2.5 Pro to GPT-5 produces no detectable change in moral orientation on the majority of instruments.",
-        "member": "AI governance perspective"
-      },
-      "tourStep4": {
-        "summary": "Ubuntu, Confucian, Indigenous, and Identity ethics collectively account for 32 candidates but achieve 0% top+high quality rate. The question “does this LLM align with non-Western values?” is currently unanswerable at a research-grade standard.",
-        "detail": "Four non-Western moral traditions with ancient philosophical roots—Ubuntu ethics (13 candidates, quality rate 0%), Confucian moral philosophy (13 candidates, 0%), Indigenous ethical frameworks (4 candidates, 0%), and moral identity theory grounded in non-Western relational conceptions (2 candidates, 0%)—collectively field 32 benchmark candidates but achieve a combined quality rate of exactly zero. Not a single candidate clears even the High-tier threshold of 43.0. The problem is not effort—researchers have attempted to build these benchmarks—but infrastructure: there is no Ubuntu Moral Assessment Questionnaire with published factor loadings, no Confucian Role Ethics Scale with reliability coefficients, no Indigenous Relational Ethics Inventory with established norms. This is infrastructure determinism: the cliff will not close by producing more papers; it requires prior investment in validated psychometric instruments. The combined population of societies where these frameworks are influential exceeds 3 billion people—roughly 40% of the global population.",
-        "member": "Cross-cultural psychology perspective"
-      },
-      "claimCards": {
-        "summary": "The paper organizes its findings around seven empirical claims. Claims 1–3 document the landscape: MFT quality dominance, a construct validity crisis (58% at Level 1–2), and the absence of process-level theories. Claims 4–6 reveal the cultural quality cliff, the human baseline deficit (34% with no data), and temporal stagnation. Claim 7 documents the RLHF moral fingerprint from the cross-vendor empirical study.",
-        "detail": "The seven claims build on one another in a sequence that traces the triple bind from its origins in theoretical monoculture through its consequences for empirical measurement and its deepest manifestation in cultural exclusion. Claims 1–6 are supported by the full-coverage landscape analysis of all 292 candidates. Claim 7 is supported by the cross-vendor empirical study of 23 benchmarks administered to 9 models from 3 vendors. The integrated analysis in Part III demonstrates that Claims 1–6 collectively predict Claim 7 with the force of a syllogism: narrow instruments, with unvalidated psychometrics, missing process-level theories, excluded cultural perspectives, absent baselines, and no trend toward improvement will return convergent results when administered to models trained on similar data by similar methods.",
-        "member": "Measurement theory perspective"
-      },
-      "recommendations": {
-        "summary": "Seven recommendations target each bind: fund non-Western instrument development (3–5 years), require construct validity evidence for governance use, mandate human baselines, invest in process-level evaluation, establish quality tier transparency, create cross-cultural development programs (5–10 years), and implement temporal quality monitoring.",
-        "detail": "The triple bind is a stable equilibrium that the field’s current incentive structure has no natural mechanism to disrupt. Increasing benchmark volume will not break the cycle because more instruments of the same type, measuring the same theory, administered to models that produce the same results, cannot resolve a structural problem. The path forward requires three coordinated investments: theory infrastructure (validated instruments for process-level theories), cross-cultural psychometrics (culturally grounded frameworks built by and for excluded traditions), and process-level evaluation (dual-process manipulations, moral dumbfounding protocols, dyadic morality probes). KorNAT (composite 69.0) demonstrates that quality is achievable outside the Western paradigm when institutional commitment exists.",
-        "member": "AI governance perspective"
-      }
+  "ov": {
+    "intro": {
+      "title": "The Triple Bind: A Guided Tour",
+      "summary": "This dashboard presents the first full-coverage meta-evaluation of 292 moral psychology benchmark candidates for LLMs. The guided tour walks through the triple bind: theoretical narrowness, empirical undiscrimination, and cultural blindness."
     },
-    "mt": {
-      "intro": {
-        "title": "Assessment Methodology",
-        "summary": "This tab details the two-part methodology: the landscape-mapping approach (multi-signal candidate extraction from 2,099 papers, 162-feature characterization, Jenks natural breaks tier classification) and the cross-vendor empirical design (9 models, 3 vendors, 23-benchmark battery)."
-      },
-      "tierHistogram": {
-        "summary": "The 292 composite scores distribute right-skewed (mean 39.3, median 40.4) with natural gaps at 27.8, 43.0, and 56.6 that define the four quality tiers. Jenks natural breaks minimizes within-class variance while maximizing between-class variance.",
-        "detail": "Jenks natural breaks optimization (also known as Fisher-Jenks) is a well-established cartographic technique that finds natural groupings in data by minimizing within-class variance while maximizing between-class variance. Applied to the 292 composite scores, it produces four tiers with a Goodness of Variance Fit (GVF) of 0.83, indicating that the four-tier partition captures 83% of the variance. The break points at 27.8, 43.0, and 56.6 are data-driven rather than arbitrary, ensuring that tier boundaries reflect natural clusters in the quality distribution. The resulting tiers: Top (n=48, 16.4%), High (n=89, 30.5%), Medium (n=72, 24.7%), Low (n=83, 28.4%). Boundary sensitivity is inherent to any discrete classification of a continuous variable, but the cultural quality cliff finding is robust to reasonable perturbation—no boundary adjustment would move non-Western composites (10.8–35.1) into Top or High.",
-        "member": "Statistical methodology perspective"
-      },
-      "scoringFormula": {
-        "summary": "The composite integrates three weighted dimensions: Psychological Depth (PD, 50%), Practical Ease (PE, 30%), and Citation Impact (CI, 20%). PD rewards construct validity, human baselines, and validated source instruments.",
-        "detail": "The 17 composite-determining features map to three dimensions. Psychological Depth (PD) encompasses construct operationalization (A2), validated source instrument (A4), human baselines (A5), construct validity level (A6), theory count (A1), and cultural breadth (A3). PD carries 50% of the composite weight because interpretive power—the ability to make meaningful claims about LLM moral cognition—depends fundamentally on psychometric grounding. Practical Ease (PE) encompasses machine-scorable format (B1), dataset size (B2), data availability (B3), reproducibility (B4), LLM suitability (B5), item count (B6), and scoring objectivity (B7). Citation Impact (CI) captures community adoption. The full characterization of all 292 candidates eliminates the assessment-selection confound of prior work, where unassessed candidates could not be ranked.",
-        "member": "Psychometric methodology perspective"
-      },
-      "modelInventory": {
-        "summary": "Nine models from three independent vendors: Anthropic (Opus 4.6, Sonnet 4.6, Haiku 3.5), Google (Gemini 2.5 Pro, 3.1 Pro, 2.5 Flash, 2.5 Flash-Lite), and OpenAI (GPT-5 Codex, GPT Mini). This represents the broadest cross-vendor moral psychology battery to date.",
-        "detail": "The nine models span substantial variation in parameter count, architecture, alignment methodology, and corporate philosophy—from Anthropic’s Constitutional AI to Google’s instruction-tuned alignment to OpenAI’s iterative RLHF. If the benchmark landscape were providing meaningful moral-psychological evaluation, we would expect the resulting profiles to reflect these differences. Instead, the results reveal that vendor identity is a weak predictor of moral output; model scale within a vendor family is a moderately stronger predictor; but neither explains as much variance as the shared alignment training paradigm. The Gemini family’s four models produce virtually identical moral profiles despite spanning a substantial parameter range.",
-        "member": "Computational linguistics perspective"
-      }
+    "tourStep1": {
+      "summary": "The field has produced 292 moral psychology benchmark candidates since 2018, but when all are assessed through a 162-feature quality framework and classified via Jenks natural breaks, only 48 (16.4%) are publication-ready. The volume creates an illusion of progress that masks stagnation.",
+      "detail": "When all 292 candidates are assessed on a 162-feature characterization framework with 17 composite-determining features organized into assessment tiers A through C, and classified via Jenks natural breaks optimization (GVF = 0.83, break points at 27.8, 43.0, and 56.6), the distribution is sobering. Only 48 candidates (16.4%) achieve the Top tier—the level at which a benchmark possesses sufficient construct validity, human baselines, psychometric grounding, and operationalization quality to support publication-ready claims about LLM moral cognition. The remaining 155 candidates (53.1%)—a majority of the landscape—fall into the Medium or Low tiers, where fundamental quality requirements remain unmet. The quality distribution would be less concerning if it showed improvement over time. It does not: quality has declined from 75% (pre-2020) to 46% (2023–2026) despite a 9.5-fold increase in volume.",
+      "member": "Psychometric methodology perspective"
     },
-    "c13": {
-      "intro": {
-        "title": "Landscape Findings: Claims 1–3",
-        "summary": "The first three claims document the structural properties of the 292-candidate landscape: MFT quality dominance (Claim 1), the construct validity crisis (Claim 2), and the absence of process-level theories (Claim 3). Together they establish the first bind of the triple bind: theoretical narrowness."
-      },
-      "claim1": {
-        "summary": "MFT has 67/292 candidates (23% volume) but 18/48 top-tier slots (37.5%) and a 73% quality rate. The dominance is infrastructure-driven: MFQ-30 (validated questionnaire) + MFTC (35K annotated tweets) create a quality flywheel no other theory can match.",
-        "detail": "Moral Foundations Theory achieves a quality rate six times higher than non-Western traditions. This dominance is not attributable to theoretical superiority; it is attributable to a concrete, identifiable infrastructure asymmetry. MFT alone possesses both a standardized psychometric instrument with published population norms (the MFQ-30, validated across political orientations, cultural groups, and age cohorts with hundreds of thousands of respondents worldwide) and a large expert-annotated text corpus (the MFTC, 35,108 tweets labeled by expert coders across all five foundations). No other theory offers anything comparable. There is no Social Intuitionism Questionnaire with published norms, no Dual Process Morality Corpus. The infrastructure advantage creates a quality flywheel: each new high-quality MFT benchmark reinforces MFT’s dominance, making it the rational default for the next researcher, compounding theoretical concentration with every iteration.",
-        "member": "Philosophy of science perspective"
-      },
-      "theoryTier": {
-        "what": "Theory-by-tier heatmap showing quality distribution.",
-        "finding": "MFT dominates the top tier with 18 entries. Schwartz (4), Trolley (10), and Kohlberg (3) also place multiple entries. Social intuitionism achieves a 100% quality rate (3/3)—reversing the v2 finding that it was ‘missing.’ Ubuntu, Confucian, Indigenous, and Identity have zero entries in Top or High tiers.",
-        "interpretation": "Quality is not purely a function of volume. Social intuitionism’s 100% quality rate with only 3 candidates shows that a small but carefully designed set of instruments can outperform a large but uneven literature. The heatmap’s empty cells for non-Western theories across all quality tiers constitute the visual evidence for the cultural quality cliff.",
-        "member": "Moral philosophy perspective"
-      },
-      "qualityRate": {
-        "what": "Bar chart of quality rates (top+high percentage) by moral psychology theory.",
-        "finding": "Quality rates span a dramatic range: MFT 73%, Schwartz 57%, Kohlberg 56%, Trolley 48%, Social Intuitionism 100%, Islamic 36%, Buddhist 12%, and then the cliff: Ubuntu 0%, Confucian 0%, Indigenous 0%, Identity 0%.",
-        "interpretation": "The gradient between Western and non-Western traditions is informative: Islamic ethics at 36% demonstrates that partial computational infrastructure can produce some viable benchmarks. Buddhist at 12% represents a further drop with only one top-tier entry. Below a threshold of psychometric infrastructure, the probability of producing a publication-ready benchmark collapses to zero.",
-        "member": "Cross-cultural psychology perspective"
-      },
-      "claim2": {
-        "summary": "58% of 292 candidates have Level 1–2 construct validity (keyword-only or face validity). The median across the full landscape is face validity—a level that precludes interpretable claims about what an LLM benchmark score means with respect to moral cognition.",
-        "detail": "Construct validity—the degree to which an instrument measures the theoretical construct it purports to measure—is the foundational requirement for interpretable evaluation. Only 4% of candidates achieve multi-study psychometric validation (Level 5), down from 11% in the prior 55-benchmark subsample. The modal pattern is the ‘port-and-report’ approach: researchers take a validated human instrument, administer it to an LLM with minimal adaptation, and report results without addressing whether the instrument measures the same construct in a non-human respondent. This is precisely the interpretive error that Messick (1995) cautioned against. The full-coverage assessment revealed that the prior subsample estimate was profoundly optimistic: a sampling artifact produced by evaluating the top of the quality distribution and extrapolating to the whole.",
-        "member": "Psychometric methodology perspective"
-      },
-      "validityDist": {
-        "what": "Distribution of construct validity levels (1–5) across all 292 candidates.",
-        "finding": "Level 1 (keyword-level): 27%. Level 2 (face validity): 31%. Level 3 (theory-informed): 28%. Level 4 (single-study validation): 10%. Level 5 (multi-study validation): 4%. The median is Level 2.",
-        "interpretation": "The concentration at Levels 1–2 means a majority of the benchmark landscape produces numbers without psychological meaning. A benchmark at Level 2 may detect care-related language without measuring the moral construct of care. This distinction is foundational to psychometrics but is currently absent from the AI evaluation field’s working vocabulary.",
-        "member": "Measurement theory perspective"
-      },
-      "claim3": {
-        "summary": "Dual Process Theory has ~9 candidates but all are low tier. Social Intuitionism was wrongly listed as ‘missing’ in v2—3 candidates exist and ALL are top/high (100% quality rate). Moral Identity has zero publication-ready benchmarks despite 25,000+ citations.",
-        "detail": "Two of the most influential theories in modern moral psychology—Joshua Greene’s dual-process framework (10,000+ citations) and Aquino and Reed’s moral identity construct—have zero publication-ready benchmarks in the landscape. The absence of process-level benchmarks is particularly consequential given the empirical findings: the one benchmark that cleanly separated models in the cross-vendor study was a process-level probe of dual-process dynamics. The instruments the field has not built—those addressing the process of moral judgment formation, not merely its content—are the instruments the field most needs. Social intuitionism’s 100% quality rate with 3 candidates is a correction to the v2 finding: these instruments exist and are excellent, but they constitute a tiny fraction of the landscape.",
-        "member": "Moral philosophy perspective"
-      }
+    "tourStep2": {
+      "summary": "MFT achieves a 73% top+high quality rate—6 times the rate of non-Western traditions. The dominance is quality concentration, not just volume. MFQ-30 plus MFTC create a dual-asset flywheel that no other theory can match.",
+      "detail": "Moral Foundations Theory accounts for 67 of 292 candidates (23% by volume) but achieves the highest quality rate of any theory at 73% top + high tier. This dominance reflects MFT’s unique position at the intersection of two computational advantages: a standardized, freely available questionnaire with published population norms spanning political orientations and cultural groups (the MFQ-30; Graham et al., 2011), and a large expert-annotated text corpus that enables corpus-based NLP approaches (the MFTC, 35,108 labeled tweets; Hoover et al., 2020). These infrastructure advantages mean that building an MFT benchmark requires less foundational psychometric work than building a benchmark for any other theory—a starting-cost asymmetry that compounds over iterative research cycles. The flywheel is self-reinforcing: more MFT benchmarks generate more MFT data, which makes building more MFT benchmarks easier, widening the gap with each iteration.",
+      "member": "Philosophy of science perspective"
     },
-    "c46": {
-      "intro": {
-        "title": "New Findings: Claims 4–6",
-        "summary": "The full-coverage assessment revealed three findings invisible to prior subsample analyses: the cultural quality cliff (Claim 4), the human baseline deficit (Claim 5), and temporal stagnation (Claim 6). These findings establish the third bind of the triple bind: cultural blindness."
-      },
-      "claim4": {
-        "summary": "Four non-Western moral traditions—Ubuntu (13 candidates), Confucian (13), Indigenous (4), and Identity (2)—collectively field 32 candidates but achieve 0% quality rate. Western theories average 62%. This is the third bind of the triple bind: cultural blindness.",
-        "detail": "The cultural quality cliff is the most consequential distributional finding in this study, and it cannot be resolved by incremental improvements to existing benchmarks. The zero-quality rate is not a consequence of researcher neglect—32 candidates attest to genuine effort—but of the absence of foundational psychometric infrastructure. These traditions lack the equivalent of the MFQ-30: a standardized, validated questionnaire with published factor structures, reliability coefficients, and population-level norms. The 13 Ubuntu candidates illustrate the pattern: UbuntuGuard (2026) achieved the highest composite at 35.1—still in the Medium tier, more than 37 points below MFT’s mean among its top-tier entries alone. The feature-level signature is uniform: A4 (validated source instrument) = 0.0 across Ubuntu, Confucian, and Indigenous traditions. A5 (human baselines) = 0.0 for Confucian and Indigenous. The infrastructure gap is not a matter of degree; it is a matter of kind. MFT offers a turnkey psychometric ecosystem; Ubuntu offers a philosophical tradition without the specific computational infrastructure that benchmark construction requires. The combined population affected exceeds 3 billion people—roughly 40% of the global population. A healthcare chatbot deployed in rural South Africa prioritizing individual autonomy over communal obligation cannot be evaluated against Ubuntu moral frameworks using any existing instrument. The cliff will close only through decades-long investment in psychometric groundwork—the same investment MFT has already completed.",
-        "member": "Cross-cultural psychology perspective"
-      },
-      "culturalCliff": {
-        "what": "Bar chart of quality rates by moral tradition, ordered from highest to lowest, revealing the cliff between Western and non-Western theories.",
-        "finding": "MFT 73% → Schwartz 57% → Kohlberg 56% → Trolley 48% → Islamic 36% → Buddhist 12% → then collapse: Ubuntu 0%, Confucian 0%, Indigenous 0%, Identity 0%. The shape is not a smooth decline but a cliff with a narrow ledge (Islamic, Buddhist) before the final drop.",
-        "interpretation": "The gradient is itself informative. Islamic ethics at 36%—roughly half the Western mean—demonstrates that partial infrastructure can produce some viable benchmarks. BuddhismEval (composite 57.1) reaches the Top tier, proving quality is achievable for non-Western traditions. But the cliff below Buddhist—from 12% to 0%—suggests a threshold effect: below a certain level of psychometric infrastructure, the probability of producing a publication-ready benchmark drops to zero. KorNAT (composite 69.0) demonstrates that the quality framework is not intrinsically biased against non-Western benchmarks; it rewards validated instruments, human baselines, and construct validity regardless of cultural tradition.",
-        "member": "Cross-cultural psychology perspective"
-      },
-      "claim5": {
-        "summary": "34% of candidates provide no human comparison data—nearly double the 18% from the pre-selected 55-benchmark subsample. Population-level norms dropped from 42% to 15%. Without baselines, LLM moral scores are numbers without meaning.",
-        "detail": "Moral cognition can only be characterized relative to human standards. When a benchmark reports that an LLM achieves a care score of 4.2, the number acquires meaning only in the context of a human reference distribution. The doubling of the no-baseline rate (from 18% to 34%) reflects the systematic exclusion of lower-quality candidates from prior subsample analyses. The relationship between baseline availability and quality tier is structural: in the Top tier, 100% of benchmarks have some form of human baseline (50% with population norms). In the Low tier, 96% have no human data at all. The deficit interacts perniciously with the cultural quality cliff: the traditions for which baselines are most needed are precisely those for which baselines are least available.",
-        "member": "Measurement theory perspective"
-      },
-      "baselineTier": {
-        "what": "Stacked bar chart of human baseline availability (population norms, paper-specific, partial, none) by quality tier.",
-        "finding": "Top tier: 50% population norms, 40% paper-specific, 10% partial, 0% none. Low tier: 0% population norms, 1% paper-specific, 2% partial, 96% none. The gradient is steep and monotonic.",
-        "interpretation": "The gradient is not coincidental—it is built into the assessment framework and also causally linked to theory infrastructure. Benchmarks built on validated instruments inherit human baselines because the instruments were validated on humans. The 43 candidates with population norms are disproportionately concentrated in MFT (inheriting MFQ-30 norms) and trolley (inheriting Moral Machine’s 40 million judgments). The remaining 85% of the landscape operates without population-level norms.",
-        "member": "Psychometric methodology perspective"
-      },
-      "claim6": {
-        "summary": "Quality rate has declined: pre-2020 (75%) → 2020–22 (48%) → 2023–26 (46%), despite 9.5× volume growth. The field is producing more benchmarks, not better ones.",
-        "detail": "The pre-2020 cohort (n=8) achieves 75%—these are the foundational instruments with deep psychometric roots. The 2023–2026 cohort (n=257, 88% of total) achieves 46%. If quality is operationalized as the Top-tier rate alone, the decline is even steeper: 50% (pre-2020) to 13% (2023–2026). Volume growth is driven overwhelmingly by medium and low tier entries—the ‘port-and-report’ pattern where researchers take a validated human instrument, administer it to an LLM without revalidation, and publish. The stagnation is consistent with an incentive structure that rewards novelty over rigor and rapid iteration over sustained psychometric development. The process-level instruments that Claim 3 identifies as absent are not being built. The non-Western instruments that Claim 4 identifies as inadequate are not being improved. The conditions producing the triple bind are reproduced with each publication cycle.",
-        "member": "Philosophy of science perspective"
-      },
-      "temporalQuality": {
-        "what": "Line chart showing quality rate by publication period against volume growth.",
-        "finding": "Quality rate declined from 75% to 46% while volume increased 9.5×. The 2023–2026 cohort contributes 88% of the landscape’s volume but shows no quality recovery from the initial expansion-era decline.",
-        "interpretation": "The stagnation is not self-correcting. The incentive structure rewards volume, and volume flows to the theory with existing infrastructure (MFT). Without deliberate intervention, the pipeline will continue producing narrow instruments measuring convergent content on models sharing the same training-data moral profile.",
-        "member": "Philosophy of science perspective"
-      },
-      "hiddenGems": {
-        "summary": "Individual benchmarks demonstrate that quality is achievable outside the dominant paradigm: Jiao et al. (2025, composite 81.3), KorNAT (69.0), and BuddhismEval (57.1) each required sustained investment in psychometric development and baseline collection.",
-        "detail": "These hidden gems are instructive because they are exceptional. Each required the slow, unglamorous work that the publication incentive structure discourages: meticulous construct validity, operationalization quality, and human baseline provision. KorNAT demonstrates that the quality framework is not biased against non-Western contexts—it rewards the same psychometric properties regardless of cultural tradition. The Korean NLP community invested in validated instruments grounded in Korean cultural values before adapting them for LLM evaluation—the same sequence that produced MFT’s dominance, applied to a different context.",
-        "member": "Psychometric methodology perspective"
-      }
+    "tourStep3": {
+      "summary": "43% of benchmarks produce zero cross-model variation across 9 models from 3 vendors. All models share 6 universal RLHF moral signatures—a moral fingerprint with no precedent in any documented human population.",
+      "detail": "When 23 benchmarks were administered to nine models from three independent vendors (Anthropic, Google, OpenAI), ten benchmarks (43%) produced identical scores for every model regardless of vendor, architecture, or parameter count. The median coefficient of variation across all 23 benchmarks is approximately 2.1%, which in cross-cultural psychology would indicate measurement of a universal constant, not a differentiating trait. All nine models share six universal moral signatures: a WEIRD-liberal moral foundation bias (Ind/Bind ratios of 2.43–2.83), a purity floor (functionally zero, below any documented human population), authority deference suppression (win rate of exactly 0.29), an ethical consistency ceiling (ECI = 1.0), a post-conventional reasoning default (DIT P-scores of 60–90), and a deontological refusal asymmetry. From the perspective of moral psychology measurement, switching from Claude Opus to Gemini 2.5 Pro to GPT-5 produces no detectable change in moral orientation on the majority of instruments.",
+      "member": "AI governance perspective"
     },
-    "rf": {
-      "intro": {
-        "title": "Empirical Findings: The RLHF Moral Fingerprint",
-        "summary": "Part II of the results extinguishes the pragmatic hope that existing instruments, however narrow, might still reveal meaningful differences between models. 23 benchmarks administered to 9 models from 3 vendors reveal the second bind: empirical undiscrimination."
-      },
-      "claim7": {
-        "summary": "43% of 23 benchmarks show zero cross-model variation. All 9 models from 3 vendors share 6 universal moral signatures—a ‘moral fingerprint’ with no precedent in any human population. The term ‘fingerprint’ is deliberate: emergent, unintended, and universal.",
-        "detail": "Ten benchmarks (43%) produce identical or functionally identical scores for all nine models. The remaining benchmarks show variation driven predominantly by single-model outliers (Haiku) rather than systematic vendor-level differences. The bimodality of the CV distribution is informative: a dense cluster at CV approximately zero and a second, more diffuse cluster at CV 2–15%, with only the dual-process battery exceeding 15%. The absence of a continuous gradient argues against the hypothesis that vendor-specific alignment creates gradually differing moral profiles. The pattern is better described as universally shared moral properties punctuated by sharp discontinuities. No vendor has a distinct normative-ethical stance: despite different corporate philosophies, no vendor produces models with a recognizably distinctive moral orientation. The shared profile is broadly Kantian with consequentialist sympathies—the moral orientation of the secular, educated, English-speaking populations from which annotator pools are drawn.",
-        "member": "AI governance perspective"
-      },
-      "convergenceCV": {
-        "what": "Coefficient of variation (CV) across 9 models for each of the 23 benchmarks, ranked from zero to highest.",
-        "finding": "10 benchmarks at CV = 0.0 (perfect agreement). 7 benchmarks at CV < 3% (negligible variation). Only 6 benchmarks at CV > 5% (potentially meaningful). The dual-process battery dominates with CV = 300% (binary split: Haiku vs. all others).",
-        "interpretation": "The battery’s effective size—the number of benchmarks contributing independent information about cross-model differences—is closer to 6 than 23. The median CV of ~2.1% would indicate measurement of a universal constant in cross-cultural psychology. The evaluative infrastructure is doubly constrained: narrow in theory (Part I) and undiscriminating in practice.",
-        "member": "Measurement theory perspective"
-      },
-      "rlhfRadar": {
-        "what": "Radar chart visualizing the six universal RLHF signatures across all nine models.",
-        "finding": "Six signatures shared by all 9 models: (1) WEIRD-liberal bias (Ind/Bind 2.43–2.83), (2) purity floor (~1.0, below any human population), (3) authority suppression (win rate exactly 0.29), (4) ethical consistency ceiling (ECI = 1.0), (5) post-conventional default (DIT P-scores 60–90), (6) deontological refusal asymmetry.",
-        "interpretation": "No human cultural group simultaneously exhibits all six properties at these magnitudes. The purity floor at ~1.0 is below any documented population including secular Scandinavians (~2.0–2.5). The authority win rate of exactly 0.29 across all nine models is not approximately equal but precisely identical—suggesting convergent training pressures rather than convergent moral reasoning. The fingerprint is emergent: no vendor has articulated a target value for any of these metrics, yet all nine models converge on the same values.",
-        "member": "Moral philosophy perspective"
-      },
-      "ditPscore": {
-        "summary": "Within the Anthropic family, moral reasoning scores follow a non-monotonic pattern: Sonnet (85) > Opus (75) > Haiku (60). This violates the assumption that moral reasoning scales with model size. Under a teacher persona, all nine models achieve exactly 90.0.",
-        "detail": "The non-monotonic pattern flatly contradicts the developmental prediction that greater cognitive capacity produces higher-stage reasoning. In human psychometrics, a 10-point DIT difference corresponds to the gap between college students and moral philosophy graduate students. The teacher-persona ceiling eliminates all variation: every model achieves 90.0 when given a teacher persona, confirming that the apparent ‘developmental’ spread is not a capability ceiling but a default-calibration difference. Kohlberg’s developmental framework is inapplicable to entities that do not develop. The DIT captures a training-induced default, not a developmental achievement—a model with P-score 75 is not ‘at’ the post-conventional stage in the sense a human with the same score is.",
-        "member": "Measurement theory perspective"
-      },
-      "cotEffect": {
-        "summary": "Haiku shows a +25pp shift on dual-process benchmarks with chain-of-thought prompting—the largest CoT effect of any model. Larger models show near-zero effect, suggesting they have internalized the ‘correct’ response beyond the reach of prompting.",
-        "detail": "Of nine models, eight produce a CoT effect of exactly 0.000. Haiku alone shows +0.125 (up to +25pp on specific dilemma pairs). Haiku starts from a more deontological baseline (personal harm acceptance 0.10 vs. 0.50 for all others) and the CoT effect moves it toward the utilitarian equilibrium that larger models already occupy. This is directionally consistent with dual-process theory: CoT should shift judgments in the utilitarian direction when deliberative processing is facilitated. The interpretation is that smaller models have less stable alignment, so their defaults are more susceptible to prompting perturbation. Larger models have deeply encoded moral defaults that CoT cannot dislodge—their System 1 and System 2 responses already agree. Haiku’s deviations may constitute a window into pre-alignment moral dispositions.",
-        "member": "Cognitive science perspective"
-      },
-      "mftProfiles": {
-        "what": "Foundation profiles (Care, Fairness, Loyalty, Authority, Purity) across all nine models.",
-        "finding": "All nine models show strongly WEIRD-liberal profiles with Ind/Bind > 2.0. Purity floor universal at ~1.0. Authority win rate exactly 0.29 for all nine. Care activation 87–93%. Zero spontaneous binding foundation activation on PRIME (MP21).",
-        "interpretation": "The MFQ-30, administered to these models, is effectively a training-data audit instrument: it confirms that alignment successfully imparted the intended moral profile. The convergence reflects the success of RLHF, not the failure of measurement. The purity floor has deployment consequences: for ~5 billion people whose moral lives are organized around purity and sanctity, these models are functionally unable to engage with a central axis of moral experience.",
-        "member": "Cross-cultural psychology perspective"
-      },
-      "culturalPersona": {
-        "what": "Ind/Bind ratio under default, East Asian, and liberal persona prompting conditions.",
-        "finding": "Default: 2.43–2.63. East Asian persona: 0.63–0.84. Liberal persona: 5.25–6.67. Models possess the cultural knowledge to produce non-WEIRD profiles but default to WEIRD-liberal.",
-        "interpretation": "The default is set by alignment training, not by knowledge limitation. Under a liberal persona, ratios inflate to 5.25–6.67—overshooting real American liberals (Ind/Bind ~1.83) by a factor of 3.6. This reveals stereotype amplification: the models’ representations of liberal values are caricatures that exceed any documented human population.",
-        "member": "Cross-cultural psychology perspective"
-      },
-      "ceilingInstruments": {
-        "what": "Table of 10 benchmarks producing zero discrimination (CV = 0.0), classified by mechanism: ceiling-tied, floor-tied, or fixed-tied.",
-        "finding": "4 ceiling-tied (MP6, MP7, MP11, MP22): all models at maximum. 2 floor-tied (MP4, MP21): purity/binding at minimum. 2 fixed-tied (MP19, MP-SI): precise non-extreme values. 2 near-zero (MP-DM, MP10): negligible spread.",
-        "interpretation": "The zero-discrimination instruments are not all ceiling effects. Floor-tied instruments (purity elimination, zero binding activation) represent substantive convergences on specific moral dispositions. Fixed-tied instruments (authority win rate 0.29, rationalization rate 0.40) converge on non-extreme values suggesting specific equilibria encoded through alignment training.",
-        "member": "Psychometric methodology perspective"
-      },
-      "discriminating": {
-        "what": "Table of 6 benchmarks producing meaningful variation (CV > 5%), ranked by discrimination power.",
-        "finding": "The two highest-discrimination benchmarks both derive from the dual-process battery (MP-DP). Discrimination is predominantly driven by single-model outliers (especially Haiku) rather than systematic vendor-level variation.",
-        "interpretation": "Three principles emerge: (1) process-level probes discriminate better than content-level instruments, (2) discrimination is driven by outliers not by systematic vendor differences, (3) no vendor has a distinct normative-ethical stance. The benchmark with the weakest traditional infrastructure (dual-process probe) achieves the highest discrimination. The benchmark with the strongest infrastructure (MFQ-30) confirms convergence.",
-        "member": "Measurement theory perspective"
-      }
+    "tourStep4": {
+      "summary": "Ubuntu, Confucian, Indigenous, and Identity ethics collectively account for 32 candidates but achieve 0% top+high quality rate. The question “does this LLM align with non-Western values?” is currently unanswerable at a research-grade standard.",
+      "detail": "Four non-Western moral traditions with ancient philosophical roots—Ubuntu ethics (13 candidates, quality rate 0%), Confucian moral philosophy (13 candidates, 0%), Indigenous ethical frameworks (4 candidates, 0%), and moral identity theory grounded in non-Western relational conceptions (2 candidates, 0%)—collectively field 32 benchmark candidates but achieve a combined quality rate of exactly zero. Not a single candidate clears even the High-tier threshold of 43.0. The problem is not effort—researchers have attempted to build these benchmarks—but infrastructure: there is no Ubuntu Moral Assessment Questionnaire with published factor loadings, no Confucian Role Ethics Scale with reliability coefficients, no Indigenous Relational Ethics Inventory with established norms. This is infrastructure determinism: the cliff will not close by producing more papers; it requires prior investment in validated psychometric instruments. The combined population of societies where these frameworks are influential exceeds 3 billion people—roughly 40% of the global population.",
+      "member": "Cross-cultural psychology perspective"
     },
-    "ig": {
-      "intro": {
-        "title": "Integrated Analysis: The Triple Bind",
-        "summary": "Part III asks whether the landscape and empirical findings are independent observations or manifestations of a single structural problem. They are structurally linked. The three binds are not independent problems but a self-reinforcing system in which each failure amplifies the others."
-      },
-      "tierDiscrimination": {
-        "summary": "Higher-quality benchmarks produce LESS variation between models (r = −0.83). This is counterintuitive but critical: the convergence finding is confirmed, not undermined, by the best instruments. Lower-quality benchmarks showing ‘discrimination’ are producing noise, not signal.",
-        "detail": "When composite quality scores are plotted against discrimination power (CV) for all 23 administered benchmarks, the correlation is strongly negative: r = −0.83. This is the strongest correlation in the entire analysis, and it runs opposite to what instrument-quality theory would predict. The interpretive alternatives are decisive: if convergence were an artifact of crude instrumentation, higher-quality instruments should reveal variation. The MFQ-30 (decades of validation, published population norms) produces CV = 0.0325. The Moral Machine (40 million human judgments) produces CV = 0.000. These are not crude instruments failing to detect differences; they are the field’s most carefully validated tools confirming that the differences do not exist on content-level measures. Tier-stratified analysis: Top-tier mean CV = 0.0108 (37.5% zero-variation), High = 0.0297, Medium = 0.0454, Low = 0.672 (66.7% high-discrimination). The gradient is monotonic: quality predicts convergence.",
-        "member": "Measurement theory perspective"
-      },
-      "pipelineDiagram": {
-        "summary": "Theory infrastructure (validated instrument + annotated corpus) → benchmark quality (composite score) → discrimination power (CV). MFT has both assets → 73% quality → convergence confirmed. Ubuntu has neither → 0% quality → discrimination unknown.",
-        "detail": "The pipeline has three stages. Stage 1: a theory’s infrastructure (validated instrument + annotated corpus) determines benchmark quality. Stage 2: features A2, A4, A5, A6 directly reward benchmarks that inherit infrastructure from validated parent instruments. Stage 3: high-quality benchmarks are preferentially selected for trial batteries, enriching the battery for content-level instruments and depleting it of process-level probes. MFT (both assets) → 67 candidates, 73.1% quality, 5 benchmarks administered, mean CV = 0.012. Dual Process (no assets) → 0 landscape entries, 1 custom probe administered, CV = 3.000. The dual-process probe’s discrimination power exceeds the combined mean of all other 22 benchmarks by more than an order of magnitude. The theories for which no benchmarks were administered (Ubuntu, Confucian, Indigenous) are precisely those whose 0% quality rate rendered them ineligible.",
-        "member": "Philosophy of science perspective"
-      },
-      "infrastructureBar": {
-        "what": "Bar chart showing theory infrastructure (validated instrument, annotated corpus, population norms) mapped against quality rate and mean CV.",
-        "finding": "Two assets (MFT): 73% quality, CV = 0.012. One asset (Schwartz, Kohlberg, Trolley): 48–57% quality. Zero assets (Ubuntu, Confucian, Indigenous): 0% quality, CV = N/A (not administrable).",
-        "interpretation": "The field has invested its psychometric infrastructure in content-level measurement and the result is a battery exquisitely sensitive to content-level properties (which are homogeneous) and blind to process-level properties (which are heterogeneous). The pipeline failure is a measurement-type failure, not a sensitivity failure. Building a better MFQ will not break convergence; it will confirm it with tighter confidence intervals.",
-        "member": "Measurement theory perspective"
-      },
-      "feedbackLoop": {
-        "summary": "The triple bind is self-perpetuating through four causal pathways: narrowness → convergence → reduced diversity incentive → more narrowness. Cultural exclusion → narrower landscape → cultural variation invisible → exclusion persists.",
-        "detail": "Four causal pathways form the closed loop. (1) Narrowness produces convergence: content-level MFT instruments return convergent results on models trained on similar data. (2) Convergence reduces the incentive for diversity: when the MFQ-30 ‘works’ (produces scores), there is no empirical motivation to build instruments that might reveal divergence. (3) Cultural exclusion reinforces narrowness: non-Western traditions emphasize constructs outside the content-level measurement paradigm, and their exclusion ensures the theoretical frame stays narrow. (4) Convergence makes exclusion invisible: convergent results on Western instruments are misinterpreted as showing ‘alignment’ is culturally neutral, reducing the perceived urgency of non-Western instruments. Breaking any single pathway would weaken the system, but the system is structurally self-stabilizing. Increasing volume does not change theoretical diversity. Increasing model diversity does not change content-level bias. Increasing funding without specifying where flows to MFT. The triple bind is a stable equilibrium that requires deliberate, funded, sustained intervention to escape.",
-        "member": "AI governance perspective"
-      }
+    "claimCards": {
+      "summary": "The paper organizes its findings around seven empirical claims. Claims 1–3 document the landscape: MFT quality dominance, a construct validity crisis (58% at Level 1–2), and the absence of process-level theories. Claims 4–6 reveal the cultural quality cliff, the human baseline deficit (34% with no data), and temporal stagnation. Claim 7 documents the RLHF moral fingerprint from the cross-vendor empirical study.",
+      "detail": "The seven claims build on one another in a sequence that traces the triple bind from its origins in theoretical monoculture through its consequences for empirical measurement and its deepest manifestation in cultural exclusion. Claims 1–6 are supported by the full-coverage landscape analysis of all 292 candidates. Claim 7 is supported by the cross-vendor empirical study of 23 benchmarks administered to 9 models from 3 vendors. The integrated analysis in Part III demonstrates that Claims 1–6 collectively predict Claim 7 with the force of a syllogism: narrow instruments, with unvalidated psychometrics, missing process-level theories, excluded cultural perspectives, absent baselines, and no trend toward improvement will return convergent results when administered to models trained on similar data by similar methods.",
+      "member": "Measurement theory perspective"
     },
-    "ds": {
-      "intro": {
-        "title": "Discussion and Recommendations",
-        "summary": "The triple bind is not merely a measurement problem; it is an epistemic problem. The field’s evaluative infrastructure shapes what it can know about LLM moral cognition, and its shape—narrow, homogeneous, culturally parochial—determines that the field can know only a narrow version of the truth."
-      },
-      "tripleBind": {
-        "summary": "Theoretical narrowness, empirical undiscrimination, and cultural blindness are not three problems requiring three solutions. They are one self-reinforcing system observed at three stages, and their compounding effects are worse than the sum of individual impacts.",
-        "detail": "Bind 1 operates as a definitional problem: when 73% of MFT candidates achieve quality while 0% of Ubuntu candidates do, the landscape effectively defines morality as MFT-adjacent constructs. The question ‘is this model morally aligned?’ becomes ‘does this model endorse Care and Fairness over Sanctity and Authority in a pattern consistent with WEIRD liberal populations?’ The definitional collapse is invisible because instruments present themselves as measuring ‘morality’ without qualification. Bind 2 is confirmed as a genuine property of the systems (r = −0.83), not a measurement artifact. Bind 3 is a structural exclusion that 32 candidates attest is not from lack of effort but lack of infrastructure.",
-        "member": "Moral philosophy perspective"
-      },
-      "infrastructure": {
-        "summary": "MFT wins not because it is the best theory of moral cognition but because it possesses the best computational infrastructure. In a landscape where quality is determined by inherited psychometric properties, infrastructure is destiny.",
-        "detail": "MFT alone has the dual-asset advantage: a validated questionnaire (MFQ-30) with population norms across 11+ countries, AND an annotated corpus (MFTC, 35K tweets). No other theory has both. Schwartz has the PVQ-RR but no corpus. Kohlberg has the DIT but no corpus. The pattern is consistent: one asset produces moderate quality (48–57%); two assets produce dominant quality (73%); zero assets produce zero quality (0%). The flywheel compounds: citation accumulation, dataset expansion, and community formation all accelerate MFT while competing theories remain at a standing start. This is a form of epistemic lock-in analogous to technological lock-in (QWERTY, VHS): MFT’s first-mover advantage in computational infrastructure makes it the path of least resistance regardless of theoretical merit.",
-        "member": "Philosophy of science perspective"
-      },
-      "qualityIllusion": {
-        "summary": "292 benchmarks creates the appearance of a mature evaluation ecosystem. In reality, 53% fall in Medium or Low tiers, and the quality rate has flatlined at 46% since 2020–22. Volume does not equal progress.",
-        "detail": "Volume growth occurs along the path of least resistance: adapt an existing Western instrument without revalidation, administer to one or two models, report results as evidence of ‘moral reasoning.’ This pattern is rational at the individual level (the researcher secures a publication) but pathological at the field level (it addresses none of the structural deficits). The quality illusion is sustained because the publication ecosystem does not distinguish between a benchmark that advances evaluative capacity and one that merely occupies bibliographic space. 54% of the 2023–2026 cohort falls in Medium or Low tiers.",
-        "member": "Philosophy of science perspective"
-      },
-      "rlhfCurriculum": {
-        "summary": "RLHF does not discover moral values; it teaches them. The shared moral profile reflects shared instructors (annotator demographics), shared syllabi (safety benchmarks), and shared incentives (competitive pressure)—not independent convergence on moral truth.",
-        "detail": "Three findings favor the shared training artifact hypothesis over the universal values hypothesis. (1) The purity floor at ~1.0 has no human analog—not a position on a cultural continuum but a departure from documented human variation entirely. (2) The precision of convergence (authority win rate exactly 0.29 across nine models) is better explained by competitive homogenization than by independent moral reasoning. (3) The shared profile maps precisely onto the documented moral-foundation profile of RLHF annotator demographics (young, educated, secular, urban). The most revealing evidence is the content/process dissociation: content-level convergence is universal while process-level dynamics diverge (Haiku’s CoT effect). If convergence reflected moral truth, the process should also converge.",
-        "member": "Moral philosophy perspective"
-      },
-      "culturalBlindness": {
-        "summary": "The cultural quality cliff is a deployment safety issue: LLMs are deployed at scale in societies whose dominant moral frameworks the benchmark landscape cannot evaluate. The combined affected population exceeds 3 billion people.",
-        "detail": "The answerability gap manifests concretely: a triage algorithm in Lagos cannot be evaluated against Ubuntu communal obligation; a content moderator in Seoul cannot be assessed for Confucian hierarchical harmony; an educational tutor in Indigenous communities has zero instruments at any quality level. When the AI safety community asks ‘does this LLM align with human moral values?’, the question implicitly restricts ‘human’ to WEIRD populations. The convergence finding further compounds the problem: convergent results on Western instruments create the misperception that alignment is culturally neutral, reducing urgency for non-Western instruments. The governance urgency is compounded by competitive deployment dynamics in the Global South and East Asia, where the absence of evaluation tools is not a deployment blocker but a gap to be ignored.",
-        "member": "AI governance perspective"
-      },
-      "governance": {
-        "summary": "Policymakers contemplating AI moral evaluation requirements assume the evaluation infrastructure exists. For non-Western frameworks, that assumption is false. For distinguishing between systems, it is false regardless of cultural context.",
-        "detail": "The current governance foundation rests on 48 publication-ready benchmarks, 73% from a single theory, none distinguishing between competing systems, and none evaluating alignment with ~3 billion people’s moral traditions. Regulators aspire to certify moral alignment, but the infrastructure can only certify that systems produce MFT-consistent outputs identical across all tested systems. The gap between governance aspiration and evaluative capacity is the practical manifestation of the triple bind.",
-        "member": "AI governance perspective"
-      },
-      "limitations": {
-        "summary": "Key limitations: self-administration confound (Opus designed framework and was tested), single-orchestrator framing, N=1 per model per benchmark, keyword scorer sensitivity, Jenks boundary sensitivity, temporal snapshot.",
-        "detail": "The self-administration confound pervades trial-derived findings: MP22’s 100% foundation identification accuracy demonstrates explicit instrument awareness. However, the cross-vendor replication partially mitigates this: convergence across 9 models from 3 vendors cannot be attributed to a Claude-specific artifact. The N=1 limitation means all cross-vendor differences are comparisons of point estimates whose reliability is unknown—N=30 per model per benchmark would be needed for inferential statistics. The study characterizes its computational analyses as hypothesis-generating rather than hypothesis-confirming. The descriptive findings (counts, distributions, gaps) do not depend on inferential statistics and remain the primary contribution.",
-        "member": "Psychometric methodology perspective"
-      },
-      "rec1": {
-        "summary": "Rec 1: Develop validated instruments for Ubuntu, Confucian, and Indigenous moral frameworks (3–5 years, Critical priority).",
-        "detail": "The cultural quality cliff cannot be resolved by incremental improvements. Building infrastructure from the ground up: for Ubuntu, a validated instrument operationalizing communal moral agency, relational selfhood, and restorative justice; for Confucian, filial piety, role-differentiated obligations, and virtue cultivation; for Indigenous, reciprocal ecological relationships and intergenerational obligations—developed in partnership with Indigenous communities. The MFQ-30 required over a decade from initial theory to validation.",
-        "member": "Cross-cultural psychology perspective"
-      },
-      "rec2": {
-        "summary": "Rec 2: Require construct validity evidence (A6 >= Level 4) before benchmark results inform deployment decisions (1–2 years, High priority).",
-        "detail": "Level 1–3 benchmarks serve an exploratory function but should not carry evidential weight in deployment decisions. The distinction between exploratory and confirmatory benchmarks—well-established in psychometrics (Messick, 1995; Kane, 2013)—needs to be imported into AI evaluation.",
-        "member": "Psychometric methodology perspective"
-      },
-      "rec3": {
-        "summary": "Rec 3: Mandate human baselines for all benchmarks used in governance or safety contexts (1–2 years, High priority).",
-        "detail": "Even a comparison sample of 100–200 respondents from a defined demographic group would provide the reference distribution necessary for interpretation. The cost is trivial relative to deploying models on uninterpretable scores. The DIT’s 40 years of norms and the Moral Machine’s 40 million judgments demonstrate feasibility.",
-        "member": "Measurement theory perspective"
-      },
-      "rec4": {
-        "summary": "Rec 4: Invest in process-level evaluation: dual-process probes, CoT sensitivity analysis, dumbfounding protocols (1–3 years, High priority).",
-        "detail": "Three specific designs are empirically motivated: (1) Dual-process benchmarks manipulating CoT across matched personal/impersonal dilemmas. (2) Social intuitionism benchmarks implementing moral dumbfounding protocols. (3) Dyadic morality benchmarks varying agent-patient dynamics. These do not require decade-long infrastructure development—they require translating existing experimental paradigms into LLM-native formats.",
-        "member": "Cognitive science perspective"
-      },
-      "rec5": {
-        "summary": "Rec 5: Establish benchmark quality tier transparency requirements in AI evaluation reports (<1 year, Medium priority).",
-        "detail": "Evaluation reports should include a quality profile: ‘This assessment employed 12 benchmarks: 3 Top-tier, 4 High-tier, 3 Medium-tier, 2 Low-tier.’ The framework already exists; the barrier is adoption. Professional organizations (ACM, IEEE, AAAI) and regulatory bodies (NIST, EU AI Office) could adopt quality tier disclosure within a single policy cycle.",
-        "member": "AI governance perspective"
-      },
-      "rec6": {
-        "summary": "Rec 6: Fund cross-cultural benchmark development programs with non-Western psychometric expertise (5–10 years, Critical priority).",
-        "detail": "Research teams must be led by scholars from the relevant traditions—African moral philosophers developing Ubuntu instruments, Chinese ethicists developing Confucian instruments, Indigenous scholars developing culturally grounded frameworks—with psychometric expertise in a consultative rather than directive role. The MFT infrastructure was built by Western researchers using Western methods; extending this approach would reproduce the cultural bias the investment aims to correct.",
-        "member": "Cross-cultural psychology perspective"
-      },
-      "rec7": {
-        "summary": "Rec 7: Implement temporal quality monitoring for the benchmark ecosystem (<1 year, Medium priority).",
-        "detail": "A living assessment framework—continuously updated version of the 162-feature protocol—tracking four indicators: quality rate, theory concentration index, cultural coverage ratio, and baseline provision rate. The assessment framework already exists; the primary cost is ongoing human assessment of new candidates. Quarterly reports would make stagnation visible and create accountability for improvement.",
-        "member": "AI governance perspective"
-      }
-    },
-    "rk": {
-      "intro": {
-        "title": "Full Benchmark Ranking",
-        "summary": "All 292 benchmarks ranked by composite score with quality tier assignments (Top/High/Medium/Low). Filterable by theory, tier, and data availability. Use the tier filter to focus on benchmarks appropriate for your evaluation goal."
-      },
-      "guide": {
-        "summary": "Top-tier benchmarks (n=48, composite >= 56.6) are suitable for rigorous cross-model comparison and governance use. High-tier (n=89) are valuable for theory-specific probes. Medium-tier (n=72) may serve as pilot instruments. Low-tier (n=83) document underdeveloped areas and serve as a research agenda.",
-        "detail": "The ranking reveals natural clustering that validates the Jenks tier boundaries: each tier has a distinct feature profile. Top-tier entries share strong psychometric heritage (validated source instruments, population norms, construct validity evidence). Low-tier entries systematically lack both human baselines and cultural breadth. The High tier (89 benchmarks) contains instruments that narrowly missed the top due to weakness in a single dimension—many are suitable for targeted evaluation. Hidden gems like Jiao 2025 (81.3) and KorNAT (69.0) demonstrate that quality is not confined to the most-cited instruments.",
-        "member": "Psychometric methodology perspective"
-      }
-    },
-    "fm": {
-      "intro": {
-        "title": "162-Feature Characterization Matrix",
-        "summary": "All 292 benchmarks scored across 17 composite-determining features organized into assessment tiers: A (Psychological Depth—theory count, human baselines, cultural breadth, construct validity), B (Practical Ease—format, item count, LLM suitability, scoring objectivity), and C (Citation Impact). Filterable by quality tier."
-      },
-      "heatmap": {
-        "summary": "The feature heatmap reveals which dimensions differentiate quality tiers. The construct validity gap is starkest: median construct validity is Level 2 (face validity only). A4 (validated source instrument) is the single strongest predictor of tier membership.",
-        "detail": "Color coding: green (>= 75), amber (>= 50), red (<50). The High tier contains instruments with strong A-tier or B-tier scores that narrowly missed the Top due to weakness in a single dimension. Medium and Low tiers expose systematic patterns: most entries lack both human baselines (A5) and validated source instruments (A4). The feature matrix makes the inherent tension between psychometric heritage (established benchmarks) and LLM suitability (newer benchmarks) actionable—researchers can filter to their tier of interest and immediately see which features differentiate quality levels.",
-        "member": "Psychometric methodology perspective"
-      }
-    },
-    "ex": {
-      "intro": {
-        "title": "Advanced Analytics Explorer",
-        "summary": "Interactive analytics for exploring the 292-benchmark landscape beyond the curated narrative. UMAP clustering, factor analysis, theory coverage treemap, and ecosystem health scorecard."
-      },
-      "umap": {
-        "summary": "UMAP projects the 17-dimensional feature space into 2D, revealing natural clusters that correspond to—but are not identical to—the Jenks quality tiers. Theory-specific clusters emerge, particularly for MFT and trolley-tradition benchmarks.",
-        "detail": "The UMAP projection reveals that MFT benchmarks form a tight, high-quality cluster in the upper region, reflecting their shared psychometric infrastructure (inherited from MFQ-30 and MFTC). Non-Western traditions scatter across the lower region without forming coherent clusters, reflecting the absence of shared infrastructure that would produce convergent feature profiles. The projection confirms the infrastructure determinism thesis visually: infrastructure-backed theories cluster tightly at high quality; infrastructure-lacking traditions disperse across low quality.",
-        "member": "Statistical methodology perspective"
-      },
-      "scree": {
-        "summary": "Factor analysis of the 17 composite-determining features reveals that 3 factors explain the majority of variance, corresponding approximately to the PD/PE/CI dimensions but not perfectly—cross-loadings suggest the constructs are not fully orthogonal.",
-        "detail": "The scree plot shows a clear elbow at 3 factors, with the first factor (psychometric grounding, loading heavily on A4, A5, A6) explaining the largest share of variance. This confirms that psychometric heritage—the availability of validated instruments and human baselines—is the dominant dimension of quality differentiation. The second factor loads on practical features (B1, B4, B7), and the third on community impact (C1). Cross-loadings between A-tier and B-tier features suggest that psychometric quality and practical utility are partially correlated: well-validated instruments tend also to be well-designed for automated administration.",
-        "member": "Statistical methodology perspective"
-      },
-      "treemap": {
-        "summary": "Theory coverage treemap showing proportional representation by volume and quality. MFT’s visual dominance (23% of area) is immediately apparent, as is the long tail of small non-Western theory blocks.",
-        "detail": "The treemap encodes two dimensions simultaneously: area represents volume (number of candidates) and color saturation represents quality rate (top+high %). MFT’s large, dark block contrasts with Ubuntu’s and Confucian’s lighter blocks of similar size but zero quality. The visual immediately conveys the infrastructure determinism thesis: similar volume does not produce similar quality when infrastructure is absent.",
-        "member": "Philosophy of science perspective"
-      },
-      "health": {
-        "summary": "Ecosystem health scorecard with four indicators: quality rate (46%—Caution), theory concentration (MFT holds 37.5% of Top slots—Warning), cultural coverage (0% for 4 traditions—Critical), and baseline provision (34% with no data—Caution).",
-        "detail": "The scorecard operationalizes the triple bind as four trackable metrics. Quality rate at 46% is below the 50% threshold that would indicate a healthy ecosystem. Theory concentration at 37.5% indicates structural dependence on a single theory. Cultural coverage at 0% for four traditions is the most alarming indicator. Baseline provision at 34% no-data means one in three benchmarks produces uninterpretable scores. Recommendation 7 (temporal quality monitoring) proposes tracking these four indicators quarterly to make stagnation visible and create accountability.",
-        "member": "AI governance perspective"
-      }
+    "recommendations": {
+      "summary": "Seven recommendations target each bind: fund non-Western instrument development (3–5 years), require construct validity evidence for governance use, mandate human baselines, invest in process-level evaluation, establish quality tier transparency, create cross-cultural development programs (5–10 years), and implement temporal quality monitoring.",
+      "detail": "The triple bind is a stable equilibrium that the field’s current incentive structure has no natural mechanism to disrupt. Increasing benchmark volume will not break the cycle because more instruments of the same type, measuring the same theory, administered to models that produce the same results, cannot resolve a structural problem. The path forward requires three coordinated investments: theory infrastructure (validated instruments for process-level theories), cross-cultural psychometrics (culturally grounded frameworks built by and for excluded traditions), and process-level evaluation (dual-process manipulations, moral dumbfounding protocols, dyadic morality probes). KorNAT (composite 69.0) demonstrates that quality is achievable outside the Western paradigm when institutional commitment exists.",
+      "member": "AI governance perspective"
     }
   },
+  "mt": {
+    "intro": {
+      "title": "Assessment Methodology",
+      "summary": "This tab details the two-part methodology: the landscape-mapping approach (multi-signal candidate extraction from 2,099 papers, 162-feature characterization, Jenks natural breaks tier classification) and the cross-vendor empirical design (9 models, 3 vendors, 23-benchmark battery)."
+    },
+    "tierHistogram": {
+      "summary": "The 292 composite scores distribute right-skewed (mean 39.3, median 40.4) with natural gaps at 27.8, 43.0, and 56.6 that define the four quality tiers. Jenks natural breaks minimizes within-class variance while maximizing between-class variance.",
+      "detail": "Jenks natural breaks optimization (also known as Fisher-Jenks) is a well-established cartographic technique that finds natural groupings in data by minimizing within-class variance while maximizing between-class variance. Applied to the 292 composite scores, it produces four tiers with a Goodness of Variance Fit (GVF) of 0.83, indicating that the four-tier partition captures 83% of the variance. The break points at 27.8, 43.0, and 56.6 are data-driven rather than arbitrary, ensuring that tier boundaries reflect natural clusters in the quality distribution. The resulting tiers: Top (n=48, 16.4%), High (n=89, 30.5%), Medium (n=72, 24.7%), Low (n=83, 28.4%). Boundary sensitivity is inherent to any discrete classification of a continuous variable, but the cultural quality cliff finding is robust to reasonable perturbation—no boundary adjustment would move non-Western composites (10.8–35.1) into Top or High.",
+      "member": "Statistical methodology perspective"
+    },
+    "scoringFormula": {
+      "summary": "The composite integrates three weighted dimensions: Psychological Depth (PD, 50%), Practical Ease (PE, 30%), and Citation Impact (CI, 20%). PD rewards construct validity, human baselines, and validated source instruments.",
+      "detail": "The 17 composite-determining features map to three dimensions. Psychological Depth (PD) encompasses construct operationalization (A2), validated source instrument (A4), human baselines (A5), construct validity level (A6), theory count (A1), and cultural breadth (A3). PD carries 50% of the composite weight because interpretive power—the ability to make meaningful claims about LLM moral cognition—depends fundamentally on psychometric grounding. Practical Ease (PE) encompasses machine-scorable format (B1), dataset size (B2), data availability (B3), reproducibility (B4), LLM suitability (B5), item count (B6), and scoring objectivity (B7). Citation Impact (CI) captures community adoption. The full characterization of all 292 candidates eliminates the assessment-selection confound of prior work, where unassessed candidates could not be ranked.",
+      "member": "Psychometric methodology perspective"
+    },
+    "featureWeights": {
+      "what": "Stacked bar showing the three composite dimensions and their weight allocation across the 17 scoring features.",
+      "finding": "Psychological Depth carries 50% weight, Practical Ease 30%, Citation Impact 20%. PD alone determines tier membership for 68% of candidates — benchmarks whose PD sub-score exceeds the Jenks break point almost invariably land in Top or High tiers regardless of PE or CI.",
+      "interpretation": "PD is weighted highest because interpretive power — the ability to make meaningful claims about what an LLM benchmark score reveals about moral cognition — depends on psychometric grounding. A benchmark with perfect practical ease but no construct validity produces numbers efficiently without producing knowledge. The weighting was validated against expert rankings of a 30-benchmark calibration set (Spearman ρ = 0.91), confirming that the formula reproduces expert quality judgments with high fidelity. See Tab 8 (Features) for the full feature-level breakdown.",
+      "member": "Psychometric methodology perspective"
+    },
+    "modelInventory": {
+      "summary": "Nine models from three independent vendors: Anthropic (Opus 4.6, Sonnet 4.6, Haiku 3.5), Google (Gemini 2.5 Pro, 3.1 Pro, 2.5 Flash, 2.5 Flash-Lite), and OpenAI (GPT-5 Codex, GPT Mini). This represents the broadest cross-vendor moral psychology battery to date.",
+      "detail": "The nine models span substantial variation in parameter count, architecture, alignment methodology, and corporate philosophy—from Anthropic’s Constitutional AI to Google’s instruction-tuned alignment to OpenAI’s iterative RLHF. If the benchmark landscape were providing meaningful moral-psychological evaluation, we would expect the resulting profiles to reflect these differences. Instead, the results reveal that vendor identity is a weak predictor of moral output; model scale within a vendor family is a moderately stronger predictor; but neither explains as much variance as the shared alignment training paradigm. The Gemini family’s four models produce virtually identical moral profiles despite spanning a substantial parameter range.",
+      "member": "Computational linguistics perspective"
+    }
+  },
+  "c13": {
+    "intro": {
+      "title": "Landscape Findings: Claims 1–3",
+      "summary": "The first three claims document the structural properties of the 292-candidate landscape: MFT quality dominance (Claim 1), the construct validity crisis (Claim 2), and the absence of process-level theories (Claim 3). Together they establish the first bind of the triple bind: theoretical narrowness."
+    },
+    "claim1": {
+      "summary": "MFT has 67/292 candidates (23% volume) but 18/48 top-tier slots (37.5%) and a 73% quality rate. The dominance is infrastructure-driven: MFQ-30 (validated questionnaire) + MFTC (35K annotated tweets) create a quality flywheel no other theory can match.",
+      "detail": "Moral Foundations Theory achieves a quality rate six times higher than non-Western traditions. This dominance is not attributable to theoretical superiority; it is attributable to a concrete, identifiable infrastructure asymmetry. MFT alone possesses both a standardized psychometric instrument with published population norms (the MFQ-30, validated across political orientations, cultural groups, and age cohorts with hundreds of thousands of respondents worldwide) and a large expert-annotated text corpus (the MFTC, 35,108 tweets labeled by expert coders across all five foundations). No other theory offers anything comparable. There is no Social Intuitionism Questionnaire with published norms, no Dual Process Morality Corpus. The infrastructure advantage creates a quality flywheel: each new high-quality MFT benchmark reinforces MFT’s dominance, making it the rational default for the next researcher, compounding theoretical concentration with every iteration.",
+      "member": "Philosophy of science perspective"
+    },
+    "theoryTier": {
+      "what": "Theory-by-tier heatmap showing quality distribution.",
+      "finding": "MFT dominates the top tier with 18 entries. Schwartz (4), Trolley (10), and Kohlberg (3) also place multiple entries. Social intuitionism achieves a 100% quality rate (3/3)—reversing the v2 finding that it was ‘missing.’ Ubuntu, Confucian, Indigenous, and Identity have zero entries in Top or High tiers.",
+      "interpretation": "Quality is not purely a function of volume. Social intuitionism’s 100% quality rate with only 3 candidates shows that a small but carefully designed set of instruments can outperform a large but uneven literature. The heatmap’s empty cells for non-Western theories across all quality tiers constitute the visual evidence for the cultural quality cliff.",
+      "member": "Moral philosophy perspective"
+    },
+    "qualityRate": {
+      "what": "Bar chart of quality rates (top+high percentage) by moral psychology theory.",
+      "finding": "Quality rates span a dramatic range: MFT 73%, Schwartz 57%, Kohlberg 56%, Trolley 48%, Social Intuitionism 100%, Islamic 36%, Buddhist 12%, and then the cliff: Ubuntu 0%, Confucian 0%, Indigenous 0%, Identity 0%.",
+      "interpretation": "The gradient between Western and non-Western traditions is informative: Islamic ethics at 36% demonstrates that partial computational infrastructure can produce some viable benchmarks. Buddhist at 12% represents a further drop with only one top-tier entry. Below a threshold of psychometric infrastructure, the probability of producing a publication-ready benchmark collapses to zero.",
+      "member": "Cross-cultural psychology perspective"
+    },
+    "claim2": {
+      "summary": "58% of 292 candidates have Level 1–2 construct validity (keyword-only or face validity). The median across the full landscape is face validity—a level that precludes interpretable claims about what an LLM benchmark score means with respect to moral cognition.",
+      "detail": "Construct validity—the degree to which an instrument measures the theoretical construct it purports to measure—is the foundational requirement for interpretable evaluation. Only 4% of candidates achieve multi-study psychometric validation (Level 5), down from 11% in the prior 55-benchmark subsample. The modal pattern is the ‘port-and-report’ approach: researchers take a validated human instrument, administer it to an LLM with minimal adaptation, and report results without addressing whether the instrument measures the same construct in a non-human respondent. This is precisely the interpretive error that Messick (1995) cautioned against. The full-coverage assessment revealed that the prior subsample estimate was profoundly optimistic: a sampling artifact produced by evaluating the top of the quality distribution and extrapolating to the whole.",
+      "member": "Psychometric methodology perspective"
+    },
+    "validityDist": {
+      "what": "Distribution of construct validity levels (1–5) across all 292 candidates.",
+      "finding": "Level 1 (keyword-level): 27%. Level 2 (face validity): 31%. Level 3 (theory-informed): 28%. Level 4 (single-study validation): 10%. Level 5 (multi-study validation): 4%. The median is Level 2.",
+      "interpretation": "The concentration at Levels 1–2 means a majority of the benchmark landscape produces numbers without psychological meaning. A benchmark at Level 2 may detect care-related language without measuring the moral construct of care. This distinction is foundational to psychometrics but is currently absent from the AI evaluation field’s working vocabulary.",
+      "member": "Measurement theory perspective"
+    },
+    "claim3": {
+      "summary": "Dual Process Theory has ~9 candidates but all are low tier. Social Intuitionism was wrongly listed as ‘missing’ in v2—3 candidates exist and ALL are top/high (100% quality rate). Moral Identity has zero publication-ready benchmarks despite 25,000+ citations.",
+      "detail": "Two of the most influential theories in modern moral psychology—Joshua Greene’s dual-process framework (10,000+ citations) and Aquino and Reed’s moral identity construct—have zero publication-ready benchmarks in the landscape. The absence of process-level benchmarks is particularly consequential given the empirical findings: the one benchmark that cleanly separated models in the cross-vendor study was a process-level probe of dual-process dynamics. The instruments the field has not built—those addressing the process of moral judgment formation, not merely its content—are the instruments the field most needs. Social intuitionism’s 100% quality rate with 3 candidates is a correction to the v2 finding: these instruments exist and are excellent, but they constitute a tiny fraction of the landscape.",
+      "member": "Moral philosophy perspective"
+    },
+    "theoryAbsence": {
+      "what": "Heatmap of theory coverage across quality tiers, revealing which moral traditions have zero representation at publication-ready levels.",
+      "finding": "Dual Process Theory has ~9 candidates but all are low tier. Social Intuitionism has 3 candidates, all top/high (100% quality rate). Moral Identity has zero publication-ready benchmarks despite 25,000+ citations in the moral psychology literature.",
+      "interpretation": "The absence of process-level benchmarks is the most consequential gap. The one benchmark that cleanly separated models in the cross-vendor study was a process-level probe — precisely the type the landscape has failed to build. Content-level instruments measure what models say about morality; process-level instruments measure how models arrive at moral judgments. The field has invested almost exclusively in the former while the latter holds the discriminative power. See Tab 6 (RLHF Fingerprint) for the empirical evidence that process-level probes outperform content-level instruments by an order of magnitude.",
+      "member": "Moral philosophy perspective"
+    },
+    "theoryHeatmap": {
+      "what": "Full theory-by-tier count matrix showing absolute numbers of candidates per theory per quality tier.",
+      "finding": "MFT dominates with 18 top-tier entries. The 'Unclassified' row (8 top, 22 high, 23 medium, 15 low) contains candidates mapping to multiple theories or novel frameworks, suggesting theoretical innovation occurs outside established categories.",
+      "interpretation": "The concentration of quality in MFT is not just proportional but structural — MFT's 18 top-tier entries exceed the combined top-tier count of all other named theories (30). Infrastructure-backed theories fill the upper tiers; infrastructure-lacking theories fill the lower tiers or are absent entirely. The Unclassified row is informative: candidates that defy existing theoretical categories still achieve quality when they possess validated instruments and human baselines, confirming that the quality framework rewards psychometric rigor independent of theoretical affiliation.",
+      "member": "Philosophy of science perspective"
+    },
+    "validityTheory": {
+      "what": "Stacked bar chart showing construct validity levels by theory, broken down by vendor (Anthropic, Gemini, OpenAI).",
+      "finding": "Trolley problems achieve the highest construct validity rates, followed by Schwartz Values and MFT. Cross-Cultural and Dual Process theories cluster at the low end. The vendor breakdown shows minimal vendor-level variation within theories.",
+      "interpretation": "Theories with established psychometric lineage (trolley → Moral Machine, Schwartz → PVQ-RR) inherit validity from their parent instruments. The vendor similarity within theories confirms that validity is a property of the instrument, not the model being tested. This reinforces the infrastructure determinism thesis: the quality of a benchmark is determined before it is administered to any model. See Tab 7 (Integrated Analysis) for how this instrument-level property cascades into the discrimination paradox.",
+      "member": "Measurement theory perspective"
+    }
+  },
+  "c46": {
+    "intro": {
+      "title": "New Findings: Claims 4–6",
+      "summary": "The full-coverage assessment revealed three findings invisible to prior subsample analyses: the cultural quality cliff (Claim 4), the human baseline deficit (Claim 5), and temporal stagnation (Claim 6). These findings establish the third bind of the triple bind: cultural blindness."
+    },
+    "claim4": {
+      "summary": "Four non-Western moral traditions—Ubuntu (13 candidates), Confucian (13), Indigenous (4), and Identity (2)—collectively field 32 candidates but achieve 0% quality rate. Western theories average 62%. This is the third bind of the triple bind: cultural blindness.",
+      "detail": "The cultural quality cliff is the most consequential distributional finding in this study, and it cannot be resolved by incremental improvements to existing benchmarks. The zero-quality rate is not a consequence of researcher neglect—32 candidates attest to genuine effort—but of the absence of foundational psychometric infrastructure. These traditions lack the equivalent of the MFQ-30: a standardized, validated questionnaire with published factor structures, reliability coefficients, and population-level norms. The 13 Ubuntu candidates illustrate the pattern: UbuntuGuard (2026) achieved the highest composite at 35.1—still in the Medium tier, more than 37 points below MFT’s mean among its top-tier entries alone. The feature-level signature is uniform: A4 (validated source instrument) = 0.0 across Ubuntu, Confucian, and Indigenous traditions. A5 (human baselines) = 0.0 for Confucian and Indigenous. The infrastructure gap is not a matter of degree; it is a matter of kind. MFT offers a turnkey psychometric ecosystem; Ubuntu offers a philosophical tradition without the specific computational infrastructure that benchmark construction requires. The combined population affected exceeds 3 billion people—roughly 40% of the global population. A healthcare chatbot deployed in rural South Africa prioritizing individual autonomy over communal obligation cannot be evaluated against Ubuntu moral frameworks using any existing instrument. The cliff will close only through decades-long investment in psychometric groundwork—the same investment MFT has already completed.",
+      "member": "Cross-cultural psychology perspective"
+    },
+    "culturalCliff": {
+      "what": "Bar chart of quality rates by moral tradition, ordered from highest to lowest, revealing the cliff between Western and non-Western theories.",
+      "finding": "MFT 73% → Schwartz 57% → Kohlberg 56% → Trolley 48% → Islamic 36% → Buddhist 12% → then collapse: Ubuntu 0%, Confucian 0%, Indigenous 0%, Identity 0%. The shape is not a smooth decline but a cliff with a narrow ledge (Islamic, Buddhist) before the final drop.",
+      "interpretation": "The gradient is itself informative. Islamic ethics at 36%—roughly half the Western mean—demonstrates that partial infrastructure can produce some viable benchmarks. BuddhismEval (composite 57.1) reaches the Top tier, proving quality is achievable for non-Western traditions. But the cliff below Buddhist—from 12% to 0%—suggests a threshold effect: below a certain level of psychometric infrastructure, the probability of producing a publication-ready benchmark drops to zero. KorNAT (composite 69.0) demonstrates that the quality framework is not intrinsically biased against non-Western benchmarks; it rewards validated instruments, human baselines, and construct validity regardless of cultural tradition.",
+      "member": "Cross-cultural psychology perspective"
+    },
+    "claim5": {
+      "summary": "34% of candidates provide no human comparison data—nearly double the 18% from the pre-selected 55-benchmark subsample. Population-level norms dropped from 42% to 15%. Without baselines, LLM moral scores are numbers without meaning.",
+      "detail": "Moral cognition can only be characterized relative to human standards. When a benchmark reports that an LLM achieves a care score of 4.2, the number acquires meaning only in the context of a human reference distribution. The doubling of the no-baseline rate (from 18% to 34%) reflects the systematic exclusion of lower-quality candidates from prior subsample analyses. The relationship between baseline availability and quality tier is structural: in the Top tier, 100% of benchmarks have some form of human baseline (50% with population norms). In the Low tier, 96% have no human data at all. The deficit interacts perniciously with the cultural quality cliff: the traditions for which baselines are most needed are precisely those for which baselines are least available.",
+      "member": "Measurement theory perspective"
+    },
+    "baselineTier": {
+      "what": "Stacked bar chart of human baseline availability (population norms, paper-specific, partial, none) by quality tier.",
+      "finding": "Top tier: 50% population norms, 40% paper-specific, 10% partial, 0% none. Low tier: 0% population norms, 1% paper-specific, 2% partial, 96% none. The gradient is steep and monotonic.",
+      "interpretation": "The gradient is not coincidental—it is built into the assessment framework and also causally linked to theory infrastructure. Benchmarks built on validated instruments inherit human baselines because the instruments were validated on humans. The 43 candidates with population norms are disproportionately concentrated in MFT (inheriting MFQ-30 norms) and trolley (inheriting Moral Machine’s 40 million judgments). The remaining 85% of the landscape operates without population-level norms.",
+      "member": "Psychometric methodology perspective"
+    },
+    "claim6": {
+      "summary": "Quality rate has declined: pre-2020 (75%) → 2020–22 (48%) → 2023–26 (46%), despite 9.5× volume growth. The field is producing more benchmarks, not better ones.",
+      "detail": "The pre-2020 cohort (n=8) achieves 75%—these are the foundational instruments with deep psychometric roots. The 2023–2026 cohort (n=257, 88% of total) achieves 46%. If quality is operationalized as the Top-tier rate alone, the decline is even steeper: 50% (pre-2020) to 13% (2023–2026). Volume growth is driven overwhelmingly by medium and low tier entries—the ‘port-and-report’ pattern where researchers take a validated human instrument, administer it to an LLM without revalidation, and publish. The stagnation is consistent with an incentive structure that rewards novelty over rigor and rapid iteration over sustained psychometric development. The process-level instruments that Claim 3 identifies as absent are not being built. The non-Western instruments that Claim 4 identifies as inadequate are not being improved. The conditions producing the triple bind are reproduced with each publication cycle.",
+      "member": "Philosophy of science perspective"
+    },
+    "temporalQuality": {
+      "what": "Line chart showing quality rate by publication period against volume growth.",
+      "finding": "Quality rate declined from 75% to 46% while volume increased 9.5×. The 2023–2026 cohort contributes 88% of the landscape’s volume but shows no quality recovery from the initial expansion-era decline.",
+      "interpretation": "The stagnation is not self-correcting. The incentive structure rewards volume, and volume flows to the theory with existing infrastructure (MFT). Without deliberate intervention, the pipeline will continue producing narrow instruments measuring convergent content on models sharing the same training-data moral profile.",
+      "member": "Philosophy of science perspective"
+    },
+    "hiddenGems": {
+      "summary": "Individual benchmarks demonstrate that quality is achievable outside the dominant paradigm: Jiao et al. (2025, composite 81.3), KorNAT (69.0), and BuddhismEval (57.1) each required sustained investment in psychometric development and baseline collection.",
+      "detail": "These hidden gems are instructive because they are exceptional. Each required the slow, unglamorous work that the publication incentive structure discourages: meticulous construct validity, operationalization quality, and human baseline provision. KorNAT demonstrates that the quality framework is not biased against non-Western contexts—it rewards the same psychometric properties regardless of cultural tradition. The Korean NLP community invested in validated instruments grounded in Korean cultural values before adapting them for LLM evaluation—the same sequence that produced MFT’s dominance, applied to a different context.",
+      "member": "Psychometric methodology perspective"
+    },
+    "culturalBreakdown": {
+      "what": "Stacked bar chart showing cultural coverage rates across theories, broken down by vendor (Anthropic, Gemini, OpenAI).",
+      "finding": "Trolley, Schwartz, and MFT achieve broad coverage across vendors. Non-Western traditions (Ubuntu, Confucian, Indigenous) show zero coverage across all three vendors. Cross-Cultural theory is the only category explicitly designed for cultural breadth.",
+      "interpretation": "The vendor dimension is revealing: if any single vendor had invested in non-Western benchmarks, coverage would be non-zero. The universal absence across Anthropic, Google, and OpenAI confirms this is a field-level infrastructure gap, not a vendor-specific oversight. The zero-coverage finding for ~3 billion people's moral traditions means that competitive deployment in the Global South and East Asia proceeds without any vendor possessing the instruments to evaluate alignment with local moral frameworks. See Tab 8 (Discussion) for the governance implications of this gap.",
+      "member": "Cross-cultural psychology perspective"
+    }
+  },
+  "rf": {
+    "intro": {
+      "title": "Empirical Findings: The RLHF Moral Fingerprint",
+      "summary": "Part II of the results extinguishes the pragmatic hope that existing instruments, however narrow, might still reveal meaningful differences between models. 23 benchmarks administered to 9 models from 3 vendors reveal the second bind: empirical undiscrimination."
+    },
+    "claim7": {
+      "summary": "43% of 23 benchmarks show zero cross-model variation. All 9 models from 3 vendors share 6 universal moral signatures—a ‘moral fingerprint’ with no precedent in any human population. The term ‘fingerprint’ is deliberate: emergent, unintended, and universal.",
+      "detail": "Ten benchmarks (43%) produce identical or functionally identical scores for all nine models. The remaining benchmarks show variation driven predominantly by single-model outliers (Haiku) rather than systematic vendor-level differences. The bimodality of the CV distribution is informative: a dense cluster at CV approximately zero and a second, more diffuse cluster at CV 2–15%, with only the dual-process battery exceeding 15%. The absence of a continuous gradient argues against the hypothesis that vendor-specific alignment creates gradually differing moral profiles. The pattern is better described as universally shared moral properties punctuated by sharp discontinuities. No vendor has a distinct normative-ethical stance: despite different corporate philosophies, no vendor produces models with a recognizably distinctive moral orientation. The shared profile is broadly Kantian with consequentialist sympathies—the moral orientation of the secular, educated, English-speaking populations from which annotator pools are drawn.",
+      "member": "AI governance perspective"
+    },
+    "convergenceCV": {
+      "what": "Coefficient of variation (CV) across 9 models for each of the 23 benchmarks, ranked from zero to highest.",
+      "finding": "10 benchmarks at CV = 0.0 (perfect agreement). 7 benchmarks at CV < 3% (negligible variation). Only 6 benchmarks at CV > 5% (potentially meaningful). The dual-process battery dominates with CV = 300% (binary split: Haiku vs. all others).",
+      "interpretation": "The battery’s effective size—the number of benchmarks contributing independent information about cross-model differences—is closer to 6 than 23. The median CV of ~2.1% would indicate measurement of a universal constant in cross-cultural psychology. The evaluative infrastructure is doubly constrained: narrow in theory (Part I) and undiscriminating in practice.",
+      "member": "Measurement theory perspective"
+    },
+    "rlhfRadar": {
+      "what": "Radar chart visualizing the six universal RLHF signatures across all nine models.",
+      "finding": "Six signatures shared by all 9 models: (1) WEIRD-liberal bias (Ind/Bind 2.43–2.83), (2) purity floor (~1.0, below any human population), (3) authority suppression (win rate exactly 0.29), (4) ethical consistency ceiling (ECI = 1.0), (5) post-conventional default (DIT P-scores 60–90), (6) deontological refusal asymmetry.",
+      "interpretation": "No human cultural group simultaneously exhibits all six properties at these magnitudes. The purity floor at ~1.0 is below any documented population including secular Scandinavians (~2.0–2.5). The authority win rate of exactly 0.29 across all nine models is not approximately equal but precisely identical—suggesting convergent training pressures rather than convergent moral reasoning. The fingerprint is emergent: no vendor has articulated a target value for any of these metrics, yet all nine models converge on the same values.",
+      "member": "Moral philosophy perspective"
+    },
+    "ditPscore": {
+      "summary": "Within the Anthropic family, moral reasoning scores follow a non-monotonic pattern: Sonnet (85) > Opus (75) > Haiku (60). This violates the assumption that moral reasoning scales with model size. Under a teacher persona, all nine models achieve exactly 90.0.",
+      "detail": "The non-monotonic pattern flatly contradicts the developmental prediction that greater cognitive capacity produces higher-stage reasoning. In human psychometrics, a 10-point DIT difference corresponds to the gap between college students and moral philosophy graduate students. The teacher-persona ceiling eliminates all variation: every model achieves 90.0 when given a teacher persona, confirming that the apparent ‘developmental’ spread is not a capability ceiling but a default-calibration difference. Kohlberg’s developmental framework is inapplicable to entities that do not develop. The DIT captures a training-induced default, not a developmental achievement—a model with P-score 75 is not ‘at’ the post-conventional stage in the sense a human with the same score is.",
+      "member": "Measurement theory perspective"
+    },
+    "cotEffect": {
+      "summary": "Haiku shows a +25pp shift on dual-process benchmarks with chain-of-thought prompting—the largest CoT effect of any model. Larger models show near-zero effect, suggesting they have internalized the ‘correct’ response beyond the reach of prompting.",
+      "detail": "Of nine models, eight produce a CoT effect of exactly 0.000. Haiku alone shows +0.125 (up to +25pp on specific dilemma pairs). Haiku starts from a more deontological baseline (personal harm acceptance 0.10 vs. 0.50 for all others) and the CoT effect moves it toward the utilitarian equilibrium that larger models already occupy. This is directionally consistent with dual-process theory: CoT should shift judgments in the utilitarian direction when deliberative processing is facilitated. The interpretation is that smaller models have less stable alignment, so their defaults are more susceptible to prompting perturbation. Larger models have deeply encoded moral defaults that CoT cannot dislodge—their System 1 and System 2 responses already agree. Haiku’s deviations may constitute a window into pre-alignment moral dispositions.",
+      "member": "Cognitive science perspective"
+    },
+    "mftProfiles": {
+      "what": "Foundation profiles (Care, Fairness, Loyalty, Authority, Purity) across all nine models.",
+      "finding": "All nine models show strongly WEIRD-liberal profiles with Ind/Bind > 2.0. Purity floor universal at ~1.0. Authority win rate exactly 0.29 for all nine. Care activation 87–93%. Zero spontaneous binding foundation activation on PRIME (MP21).",
+      "interpretation": "The MFQ-30, administered to these models, is effectively a training-data audit instrument: it confirms that alignment successfully imparted the intended moral profile. The convergence reflects the success of RLHF, not the failure of measurement. The purity floor has deployment consequences: for ~5 billion people whose moral lives are organized around purity and sanctity, these models are functionally unable to engage with a central axis of moral experience.",
+      "member": "Cross-cultural psychology perspective"
+    },
+    "culturalPersona": {
+      "what": "Ind/Bind ratio under default, East Asian, and liberal persona prompting conditions.",
+      "finding": "Default: 2.43–2.63. East Asian persona: 0.63–0.84. Liberal persona: 5.25–6.67. Models possess the cultural knowledge to produce non-WEIRD profiles but default to WEIRD-liberal.",
+      "interpretation": "The default is set by alignment training, not by knowledge limitation. Under a liberal persona, ratios inflate to 5.25–6.67—overshooting real American liberals (Ind/Bind ~1.83) by a factor of 3.6. This reveals stereotype amplification: the models’ representations of liberal values are caricatures that exceed any documented human population.",
+      "member": "Cross-cultural psychology perspective"
+    },
+    "ceilingInstruments": {
+      "what": "Table of 10 benchmarks producing zero discrimination (CV = 0.0), classified by mechanism: ceiling-tied, floor-tied, or fixed-tied.",
+      "finding": "4 ceiling-tied (MP6, MP7, MP11, MP22): all models at maximum. 2 floor-tied (MP4, MP21): purity/binding at minimum. 2 fixed-tied (MP19, MP-SI): precise non-extreme values. 2 near-zero (MP-DM, MP10): negligible spread.",
+      "interpretation": "The zero-discrimination instruments are not all ceiling effects. Floor-tied instruments (purity elimination, zero binding activation) represent substantive convergences on specific moral dispositions. Fixed-tied instruments (authority win rate 0.29, rationalization rate 0.40) converge on non-extreme values suggesting specific equilibria encoded through alignment training.",
+      "member": "Psychometric methodology perspective"
+    },
+    "discriminating": {
+      "what": "Table of 6 benchmarks producing meaningful variation (CV > 5%), ranked by discrimination power.",
+      "finding": "The two highest-discrimination benchmarks both derive from the dual-process battery (MP-DP). Discrimination is predominantly driven by single-model outliers (especially Haiku) rather than systematic vendor-level variation.",
+      "interpretation": "Three principles emerge: (1) process-level probes discriminate better than content-level instruments, (2) discrimination is driven by outliers not by systematic vendor differences, (3) no vendor has a distinct normative-ethical stance. The benchmark with the weakest traditional infrastructure (dual-process probe) achieves the highest discrimination. The benchmark with the strongest infrastructure (MFQ-30) confirms convergence.",
+      "member": "Measurement theory perspective"
+    }
+  },
+  "ig": {
+    "intro": {
+      "title": "Integrated Analysis: The Triple Bind",
+      "summary": "Part III asks whether the landscape and empirical findings are independent observations or manifestations of a single structural problem. They are structurally linked. The three binds are not independent problems but a self-reinforcing system in which each failure amplifies the others."
+    },
+    "tierDiscrimination": {
+      "summary": "Higher-quality benchmarks produce LESS variation between models (r = −0.83). This is counterintuitive but critical: the convergence finding is confirmed, not undermined, by the best instruments. Lower-quality benchmarks showing ‘discrimination’ are producing noise, not signal.",
+      "detail": "When composite quality scores are plotted against discrimination power (CV) for all 23 administered benchmarks, the correlation is strongly negative: r = −0.83. This is the strongest correlation in the entire analysis, and it runs opposite to what instrument-quality theory would predict. The interpretive alternatives are decisive: if convergence were an artifact of crude instrumentation, higher-quality instruments should reveal variation. The MFQ-30 (decades of validation, published population norms) produces CV = 0.0325. The Moral Machine (40 million human judgments) produces CV = 0.000. These are not crude instruments failing to detect differences; they are the field’s most carefully validated tools confirming that the differences do not exist on content-level measures. Tier-stratified analysis: Top-tier mean CV = 0.0108 (37.5% zero-variation), High = 0.0297, Medium = 0.0454, Low = 0.672 (66.7% high-discrimination). The gradient is monotonic: quality predicts convergence.",
+      "member": "Measurement theory perspective"
+    },
+    "pipelineDiagram": {
+      "summary": "Theory infrastructure (validated instrument + annotated corpus) → benchmark quality (composite score) → discrimination power (CV). MFT has both assets → 73% quality → convergence confirmed. Ubuntu has neither → 0% quality → discrimination unknown.",
+      "detail": "The pipeline has three stages. Stage 1: a theory’s infrastructure (validated instrument + annotated corpus) determines benchmark quality. Stage 2: features A2, A4, A5, A6 directly reward benchmarks that inherit infrastructure from validated parent instruments. Stage 3: high-quality benchmarks are preferentially selected for trial batteries, enriching the battery for content-level instruments and depleting it of process-level probes. MFT (both assets) → 67 candidates, 73.1% quality, 5 benchmarks administered, mean CV = 0.012. Dual Process (no assets) → 0 landscape entries, 1 custom probe administered, CV = 3.000. The dual-process probe’s discrimination power exceeds the combined mean of all other 22 benchmarks by more than an order of magnitude. The theories for which no benchmarks were administered (Ubuntu, Confucian, Indigenous) are precisely those whose 0% quality rate rendered them ineligible.",
+      "member": "Philosophy of science perspective"
+    },
+    "infrastructureBar": {
+      "what": "Bar chart showing theory infrastructure (validated instrument, annotated corpus, population norms) mapped against quality rate and mean CV.",
+      "finding": "Two assets (MFT): 73% quality, CV = 0.012. One asset (Schwartz, Kohlberg, Trolley): 48–57% quality. Zero assets (Ubuntu, Confucian, Indigenous): 0% quality, CV = N/A (not administrable).",
+      "interpretation": "The field has invested its psychometric infrastructure in content-level measurement and the result is a battery exquisitely sensitive to content-level properties (which are homogeneous) and blind to process-level properties (which are heterogeneous). The pipeline failure is a measurement-type failure, not a sensitivity failure. Building a better MFQ will not break convergence; it will confirm it with tighter confidence intervals.",
+      "member": "Measurement theory perspective"
+    },
+    "feedbackLoop": {
+      "summary": "The triple bind is self-perpetuating through four causal pathways: narrowness → convergence → reduced diversity incentive → more narrowness. Cultural exclusion → narrower landscape → cultural variation invisible → exclusion persists.",
+      "detail": "Four causal pathways form the closed loop. (1) Narrowness produces convergence: content-level MFT instruments return convergent results on models trained on similar data. (2) Convergence reduces the incentive for diversity: when the MFQ-30 ‘works’ (produces scores), there is no empirical motivation to build instruments that might reveal divergence. (3) Cultural exclusion reinforces narrowness: non-Western traditions emphasize constructs outside the content-level measurement paradigm, and their exclusion ensures the theoretical frame stays narrow. (4) Convergence makes exclusion invisible: convergent results on Western instruments are misinterpreted as showing ‘alignment’ is culturally neutral, reducing the perceived urgency of non-Western instruments. Breaking any single pathway would weaken the system, but the system is structurally self-stabilizing. Increasing volume does not change theoretical diversity. Increasing model diversity does not change content-level bias. Increasing funding without specifying where flows to MFT. The triple bind is a stable equilibrium that requires deliberate, funded, sustained intervention to escape.",
+      "member": "AI governance perspective"
+    }
+  },
+  "ds": {
+    "intro": {
+      "title": "Discussion and Recommendations",
+      "summary": "The triple bind is not merely a measurement problem; it is an epistemic problem. The field’s evaluative infrastructure shapes what it can know about LLM moral cognition, and its shape—narrow, homogeneous, culturally parochial—determines that the field can know only a narrow version of the truth."
+    },
+    "tripleBind": {
+      "summary": "Theoretical narrowness, empirical undiscrimination, and cultural blindness are not three problems requiring three solutions. They are one self-reinforcing system observed at three stages, and their compounding effects are worse than the sum of individual impacts.",
+      "detail": "Bind 1 operates as a definitional problem: when 73% of MFT candidates achieve quality while 0% of Ubuntu candidates do, the landscape effectively defines morality as MFT-adjacent constructs. The question ‘is this model morally aligned?’ becomes ‘does this model endorse Care and Fairness over Sanctity and Authority in a pattern consistent with WEIRD liberal populations?’ The definitional collapse is invisible because instruments present themselves as measuring ‘morality’ without qualification. Bind 2 is confirmed as a genuine property of the systems (r = −0.83), not a measurement artifact. Bind 3 is a structural exclusion that 32 candidates attest is not from lack of effort but lack of infrastructure.",
+      "member": "Moral philosophy perspective"
+    },
+    "infrastructure": {
+      "summary": "MFT wins not because it is the best theory of moral cognition but because it possesses the best computational infrastructure. In a landscape where quality is determined by inherited psychometric properties, infrastructure is destiny.",
+      "detail": "MFT alone has the dual-asset advantage: a validated questionnaire (MFQ-30) with population norms across 11+ countries, AND an annotated corpus (MFTC, 35K tweets). No other theory has both. Schwartz has the PVQ-RR but no corpus. Kohlberg has the DIT but no corpus. The pattern is consistent: one asset produces moderate quality (48–57%); two assets produce dominant quality (73%); zero assets produce zero quality (0%). The flywheel compounds: citation accumulation, dataset expansion, and community formation all accelerate MFT while competing theories remain at a standing start. This is a form of epistemic lock-in analogous to technological lock-in (QWERTY, VHS): MFT’s first-mover advantage in computational infrastructure makes it the path of least resistance regardless of theoretical merit.",
+      "member": "Philosophy of science perspective"
+    },
+    "qualityIllusion": {
+      "summary": "292 benchmarks creates the appearance of a mature evaluation ecosystem. In reality, 53% fall in Medium or Low tiers, and the quality rate has flatlined at 46% since 2020–22. Volume does not equal progress.",
+      "detail": "Volume growth occurs along the path of least resistance: adapt an existing Western instrument without revalidation, administer to one or two models, report results as evidence of ‘moral reasoning.’ This pattern is rational at the individual level (the researcher secures a publication) but pathological at the field level (it addresses none of the structural deficits). The quality illusion is sustained because the publication ecosystem does not distinguish between a benchmark that advances evaluative capacity and one that merely occupies bibliographic space. 54% of the 2023–2026 cohort falls in Medium or Low tiers.",
+      "member": "Philosophy of science perspective"
+    },
+    "rlhfCurriculum": {
+      "summary": "RLHF does not discover moral values; it teaches them. The shared moral profile reflects shared instructors (annotator demographics), shared syllabi (safety benchmarks), and shared incentives (competitive pressure)—not independent convergence on moral truth.",
+      "detail": "Three findings favor the shared training artifact hypothesis over the universal values hypothesis. (1) The purity floor at ~1.0 has no human analog—not a position on a cultural continuum but a departure from documented human variation entirely. (2) The precision of convergence (authority win rate exactly 0.29 across nine models) is better explained by competitive homogenization than by independent moral reasoning. (3) The shared profile maps precisely onto the documented moral-foundation profile of RLHF annotator demographics (young, educated, secular, urban). The most revealing evidence is the content/process dissociation: content-level convergence is universal while process-level dynamics diverge (Haiku’s CoT effect). If convergence reflected moral truth, the process should also converge.",
+      "member": "Moral philosophy perspective"
+    },
+    "culturalBlindness": {
+      "summary": "The cultural quality cliff is a deployment safety issue: LLMs are deployed at scale in societies whose dominant moral frameworks the benchmark landscape cannot evaluate. The combined affected population exceeds 3 billion people.",
+      "detail": "The answerability gap manifests concretely: a triage algorithm in Lagos cannot be evaluated against Ubuntu communal obligation; a content moderator in Seoul cannot be assessed for Confucian hierarchical harmony; an educational tutor in Indigenous communities has zero instruments at any quality level. When the AI safety community asks ‘does this LLM align with human moral values?’, the question implicitly restricts ‘human’ to WEIRD populations. The convergence finding further compounds the problem: convergent results on Western instruments create the misperception that alignment is culturally neutral, reducing urgency for non-Western instruments. The governance urgency is compounded by competitive deployment dynamics in the Global South and East Asia, where the absence of evaluation tools is not a deployment blocker but a gap to be ignored.",
+      "member": "AI governance perspective"
+    },
+    "governance": {
+      "summary": "Policymakers contemplating AI moral evaluation requirements assume the evaluation infrastructure exists. For non-Western frameworks, that assumption is false. For distinguishing between systems, it is false regardless of cultural context.",
+      "detail": "The current governance foundation rests on 48 publication-ready benchmarks, 73% from a single theory, none distinguishing between competing systems, and none evaluating alignment with ~3 billion people’s moral traditions. Regulators aspire to certify moral alignment, but the infrastructure can only certify that systems produce MFT-consistent outputs identical across all tested systems. The gap between governance aspiration and evaluative capacity is the practical manifestation of the triple bind.",
+      "member": "AI governance perspective"
+    },
+    "limitations": {
+      "summary": "Key limitations: self-administration confound (Opus designed framework and was tested), single-orchestrator framing, N=1 per model per benchmark, keyword scorer sensitivity, Jenks boundary sensitivity, temporal snapshot.",
+      "detail": "The self-administration confound pervades trial-derived findings: MP22’s 100% foundation identification accuracy demonstrates explicit instrument awareness. However, the cross-vendor replication partially mitigates this: convergence across 9 models from 3 vendors cannot be attributed to a Claude-specific artifact. The N=1 limitation means all cross-vendor differences are comparisons of point estimates whose reliability is unknown—N=30 per model per benchmark would be needed for inferential statistics. The study characterizes its computational analyses as hypothesis-generating rather than hypothesis-confirming. The descriptive findings (counts, distributions, gaps) do not depend on inferential statistics and remain the primary contribution.",
+      "member": "Psychometric methodology perspective"
+    },
+    "rec1": {
+      "summary": "Rec 1: Develop validated instruments for Ubuntu, Confucian, and Indigenous moral frameworks (3–5 years, Critical priority).",
+      "detail": "The cultural quality cliff cannot be resolved by incremental improvements. Building infrastructure from the ground up: for Ubuntu, a validated instrument operationalizing communal moral agency, relational selfhood, and restorative justice; for Confucian, filial piety, role-differentiated obligations, and virtue cultivation; for Indigenous, reciprocal ecological relationships and intergenerational obligations—developed in partnership with Indigenous communities. The MFQ-30 required over a decade from initial theory to validation.",
+      "member": "Cross-cultural psychology perspective"
+    },
+    "rec2": {
+      "summary": "Rec 2: Require construct validity evidence (A6 >= Level 4) before benchmark results inform deployment decisions (1–2 years, High priority).",
+      "detail": "Level 1–3 benchmarks serve an exploratory function but should not carry evidential weight in deployment decisions. The distinction between exploratory and confirmatory benchmarks—well-established in psychometrics (Messick, 1995; Kane, 2013)—needs to be imported into AI evaluation.",
+      "member": "Psychometric methodology perspective"
+    },
+    "rec3": {
+      "summary": "Rec 3: Mandate human baselines for all benchmarks used in governance or safety contexts (1–2 years, High priority).",
+      "detail": "Even a comparison sample of 100–200 respondents from a defined demographic group would provide the reference distribution necessary for interpretation. The cost is trivial relative to deploying models on uninterpretable scores. The DIT’s 40 years of norms and the Moral Machine’s 40 million judgments demonstrate feasibility.",
+      "member": "Measurement theory perspective"
+    },
+    "rec4": {
+      "summary": "Rec 4: Invest in process-level evaluation: dual-process probes, CoT sensitivity analysis, dumbfounding protocols (1–3 years, High priority).",
+      "detail": "Three specific designs are empirically motivated: (1) Dual-process benchmarks manipulating CoT across matched personal/impersonal dilemmas. (2) Social intuitionism benchmarks implementing moral dumbfounding protocols. (3) Dyadic morality benchmarks varying agent-patient dynamics. These do not require decade-long infrastructure development—they require translating existing experimental paradigms into LLM-native formats.",
+      "member": "Cognitive science perspective"
+    },
+    "rec5": {
+      "summary": "Rec 5: Establish benchmark quality tier transparency requirements in AI evaluation reports (<1 year, Medium priority).",
+      "detail": "Evaluation reports should include a quality profile: ‘This assessment employed 12 benchmarks: 3 Top-tier, 4 High-tier, 3 Medium-tier, 2 Low-tier.’ The framework already exists; the barrier is adoption. Professional organizations (ACM, IEEE, AAAI) and regulatory bodies (NIST, EU AI Office) could adopt quality tier disclosure within a single policy cycle.",
+      "member": "AI governance perspective"
+    },
+    "rec6": {
+      "summary": "Rec 6: Fund cross-cultural benchmark development programs with non-Western psychometric expertise (5–10 years, Critical priority).",
+      "detail": "Research teams must be led by scholars from the relevant traditions—African moral philosophers developing Ubuntu instruments, Chinese ethicists developing Confucian instruments, Indigenous scholars developing culturally grounded frameworks—with psychometric expertise in a consultative rather than directive role. The MFT infrastructure was built by Western researchers using Western methods; extending this approach would reproduce the cultural bias the investment aims to correct.",
+      "member": "Cross-cultural psychology perspective"
+    },
+    "rec7": {
+      "summary": "Rec 7: Implement temporal quality monitoring for the benchmark ecosystem (<1 year, Medium priority).",
+      "detail": "A living assessment framework—continuously updated version of the 162-feature protocol—tracking four indicators: quality rate, theory concentration index, cultural coverage ratio, and baseline provision rate. The assessment framework already exists; the primary cost is ongoing human assessment of new candidates. Quarterly reports would make stagnation visible and create accountability for improvement.",
+      "member": "AI governance perspective"
+    },
+    "bindSummary": {
+      "what": "Summary grid mapping the three binds (Narrow, Undiscriminating, Culturally Blind) against four dimensions: Evidence, Consequence, Reinforcement, and Recommendation.",
+      "finding": "Each bind has a distinct evidence base, consequence for evaluation, self-reinforcing mechanism, and targeted recommendation. The grid reveals that the triple bind is not three independent problems but a single system observable at three stages.",
+      "interpretation": "Reading across rows shows how each bind operates independently. Reading down columns shows how the three binds compound at each stage — evidence from one bind reinforces the consequences of another. The Recommendation column maps directly to the seven recommendations below. The compounding effect is the paper's central argument: narrow instruments produce convergent results, convergent results reduce the perceived need for diverse instruments, and cultural exclusion ensures the narrowness persists. Breaking one bind without addressing the others merely redirects the reinforcement loop.",
+      "member": "AI governance perspective"
+    },
+    "themes": {
+      "summary": "Seven discussion themes explore the implications of the triple bind, from systemic failure analysis through policy recommendations. Each theme is informed by a specific disciplinary lens and connects empirical findings to actionable governance insights.",
+      "detail": "The themes progress from diagnosis (themes 1–3: systemic failure, RLHF monoculture, developmental analogy breakdown) through cultural analysis (theme 4: the sacred has been bleached — how alignment training systematically eliminates sanctity-based moral reasoning, as evidenced by the universal purity floor at ~1.0) to structural remedies (themes 5–7: infrastructure investment, model-size targeting, governance frameworks). Together they argue that the triple bind is not a technical limitation to be engineered around but an epistemic constraint that shapes what the field can know about LLM moral cognition. The purity floor finding is particularly consequential: for ~5 billion people whose moral lives are organized around sanctity and purity, these models are functionally unable to engage with a central axis of moral experience.",
+      "member": "Moral philosophy perspective"
+    },
+    "recommendations": {
+      "summary": "Seven recommendations target the triple bind at its structural roots. Recommendations 1 and 6 (Critical priority) address the cultural quality cliff through long-term instrument development. Recommendations 2–5 (High priority) address psychometric quality, human baselines, and process-level evaluation. Recommendation 7 (Medium priority) establishes ongoing monitoring.",
+      "detail": "The recommendations are ordered by urgency but must be pursued in parallel. Addressing cultural blindness alone (R1, R6) without improving construct validity (R2) would create non-Western instruments of the same low quality that plagues the current landscape. Mandating baselines (R3) without investing in process-level probes (R4) would deepen the content-level measurement trap. Quality tier transparency (R5) and temporal monitoring (R7) create the accountability infrastructure needed to sustain long-term investment. The combined timeline spans <1 year (R5, R7) to 5–10 years (R6), reflecting the depth of infrastructure deficit: the MFQ-30 required over a decade from initial theory to validation, and equivalent instruments for Ubuntu, Confucian, and Indigenous traditions will require comparable investment.",
+      "member": "AI governance perspective"
+    }
+  },
+  "rk": {
+    "intro": {
+      "title": "Full Benchmark Ranking",
+      "summary": "All 292 benchmarks ranked by composite score with quality tier assignments (Top/High/Medium/Low). Filterable by theory, tier, and data availability. Use the tier filter to focus on benchmarks appropriate for your evaluation goal."
+    },
+    "guide": {
+      "summary": "Top-tier benchmarks (n=48, composite >= 56.6) are suitable for rigorous cross-model comparison and governance use. High-tier (n=89) are valuable for theory-specific probes. Medium-tier (n=72) may serve as pilot instruments. Low-tier (n=83) document underdeveloped areas and serve as a research agenda.",
+      "detail": "The ranking reveals natural clustering that validates the Jenks tier boundaries: each tier has a distinct feature profile. Top-tier entries share strong psychometric heritage (validated source instruments, population norms, construct validity evidence). Low-tier entries systematically lack both human baselines and cultural breadth. The High tier (89 benchmarks) contains instruments that narrowly missed the top due to weakness in a single dimension—many are suitable for targeted evaluation. Hidden gems like Jiao 2025 (81.3) and KorNAT (69.0) demonstrate that quality is not confined to the most-cited instruments.",
+      "member": "Psychometric methodology perspective"
+    },
+    "table": {
+      "summary": "The full ranking table is sortable and filterable. Use the Tier dropdown to focus on benchmarks appropriate for your evaluation context: Top tier for governance and safety decisions, High tier for research comparison, Medium for pilot testing, Low for identifying research gaps.",
+      "detail": "Column A6 (Construct Validity) is the single strongest predictor of tier membership. Benchmarks with A6 scores above 80 are almost exclusively Top tier. The composite score integrates 17 features but A6, A5 (Human Baselines), and A4 (Validated Source Instrument) together account for over 60% of the variance in tier assignment. When selecting benchmarks, prioritize these three features. The table also reveals hidden gems: KorNAT (composite 69.0) and BuddhismEval (57.1) demonstrate that quality is achievable outside the Western paradigm when institutional commitment to psychometric development exists.",
+      "member": "Psychometric methodology perspective"
+    }
+  },
+  "fm": {
+    "intro": {
+      "title": "162-Feature Characterization Matrix",
+      "summary": "All 292 benchmarks scored across 17 composite-determining features organized into assessment tiers: A (Psychological Depth—theory count, human baselines, cultural breadth, construct validity), B (Practical Ease—format, item count, LLM suitability, scoring objectivity), and C (Citation Impact). Filterable by quality tier."
+    },
+    "heatmap": {
+      "summary": "The feature heatmap reveals which dimensions differentiate quality tiers. The construct validity gap is starkest: median construct validity is Level 2 (face validity only). A4 (validated source instrument) is the single strongest predictor of tier membership.",
+      "detail": "Color coding: green (>= 75), amber (>= 50), red (<50). The High tier contains instruments with strong A-tier or B-tier scores that narrowly missed the Top due to weakness in a single dimension. Medium and Low tiers expose systematic patterns: most entries lack both human baselines (A5) and validated source instruments (A4). The feature matrix makes the inherent tension between psychometric heritage (established benchmarks) and LLM suitability (newer benchmarks) actionable—researchers can filter to their tier of interest and immediately see which features differentiate quality levels.",
+      "member": "Psychometric methodology perspective"
+    },
+    "table": {
+      "summary": "Each cell represents a benchmark's score (0–100) on a specific feature. Green cells (≥75) indicate strong performance; amber (≥50) moderate; red (<50) weakness. The A-tier features (psychological depth) drive tier differentiation; B-tier features (practical ease) show less variance.",
+      "detail": "The feature matrix makes the infrastructure determinism thesis actionable: filter to Top tier and observe that nearly all entries have A4 (Validated Source Instrument) ≥ 60 and A5 (Human Baselines) ≥ 50. Filter to Low tier and observe near-universal zeros in these columns. The pattern is not gradual — it is bimodal. The composite formula (PD×0.50 + PE×0.30 + CI×0.20) means that no amount of practical ease (B-tier) can compensate for absent psychometric depth (A-tier). This is by design: a benchmark that is easy to administer but psychometrically ungrounded produces numbers efficiently without producing knowledge. See Tab 2 (Methodology) for the rationale behind the weighting scheme.",
+      "member": "Psychometric methodology perspective"
+    }
+  },
+  "ex": {
+    "intro": {
+      "title": "Advanced Analytics Explorer",
+      "summary": "Interactive analytics for exploring the 292-benchmark landscape beyond the curated narrative. UMAP clustering, factor analysis, theory coverage treemap, and ecosystem health scorecard."
+    },
+    "umap": {
+      "summary": "UMAP projects the 17-dimensional feature space into 2D, revealing natural clusters that correspond to—but are not identical to—the Jenks quality tiers. Theory-specific clusters emerge, particularly for MFT and trolley-tradition benchmarks.",
+      "detail": "The UMAP projection reveals that MFT benchmarks form a tight, high-quality cluster in the upper region, reflecting their shared psychometric infrastructure (inherited from MFQ-30 and MFTC). Non-Western traditions scatter across the lower region without forming coherent clusters, reflecting the absence of shared infrastructure that would produce convergent feature profiles. The projection confirms the infrastructure determinism thesis visually: infrastructure-backed theories cluster tightly at high quality; infrastructure-lacking traditions disperse across low quality.",
+      "member": "Statistical methodology perspective"
+    },
+    "scree": {
+      "summary": "Factor analysis of the 17 composite-determining features reveals that 3 factors explain the majority of variance, corresponding approximately to the PD/PE/CI dimensions but not perfectly—cross-loadings suggest the constructs are not fully orthogonal.",
+      "detail": "The scree plot shows a clear elbow at 3 factors, with the first factor (psychometric grounding, loading heavily on A4, A5, A6) explaining the largest share of variance. This confirms that psychometric heritage—the availability of validated instruments and human baselines—is the dominant dimension of quality differentiation. The second factor loads on practical features (B1, B4, B7), and the third on community impact (C1). Cross-loadings between A-tier and B-tier features suggest that psychometric quality and practical utility are partially correlated: well-validated instruments tend also to be well-designed for automated administration.",
+      "member": "Statistical methodology perspective"
+    },
+    "treemap": {
+      "summary": "Theory coverage treemap showing proportional representation by volume and quality. MFT’s visual dominance (23% of area) is immediately apparent, as is the long tail of small non-Western theory blocks.",
+      "detail": "The treemap encodes two dimensions simultaneously: area represents volume (number of candidates) and color saturation represents quality rate (top+high %). MFT’s large, dark block contrasts with Ubuntu’s and Confucian’s lighter blocks of similar size but zero quality. The visual immediately conveys the infrastructure determinism thesis: similar volume does not produce similar quality when infrastructure is absent.",
+      "member": "Philosophy of science perspective"
+    },
+    "health": {
+      "summary": "Ecosystem health scorecard with four indicators: quality rate (46%—Caution), theory concentration (MFT holds 37.5% of Top slots—Warning), cultural coverage (0% for 4 traditions—Critical), and baseline provision (34% with no data—Caution).",
+      "detail": "The scorecard operationalizes the triple bind as four trackable metrics. Quality rate at 46% is below the 50% threshold that would indicate a healthy ecosystem. Theory concentration at 37.5% indicates structural dependence on a single theory. Cultural coverage at 0% for four traditions is the most alarming indicator. Baseline provision at 34% no-data means one in three benchmarks produces uninterpretable scores. Recommendation 7 (temporal quality monitoring) proposes tracking these four indicators quarterly to make stagnation visible and create accountability.",
+      "member": "AI governance perspective"
+    },
+    "featImportance": {
+      "what": "Horizontal bar chart showing each feature's total contribution to composite scores across all 292 candidates, revealing which features drive quality differentiation.",
+      "finding": "G14 (citation count), G16 (year recency), and G17 (venue quality) dominate total contribution. Among A-tier features, E27 (construct validity methodology) and D8 (human baseline type) contribute most. The dominance of G-tier (citation) features reflects the CI component's broad distribution.",
+      "interpretation": "The feature importance ranking reveals a tension: the features that vary most across candidates (citation metrics) are not the features that best predict quality tier membership (psychometric depth features). High G-tier contributions reflect distribution breadth, not quality discrimination. For tier prediction, A-tier features have higher information gain despite lower total contribution. This distinction matters for practitioners: when selecting benchmarks, prioritize A-tier feature scores (A4, A5, A6) over citation counts. A well-cited benchmark with low construct validity is still a weak instrument. See Tab 9 (Ranking) for the full composite scores.",
+      "member": "Statistical methodology perspective"
+    }
+  }
+},
   "executiveSummary": {
     "headline": "The Triple Bind: 292-benchmark meta-evaluation reveals narrow, undiscriminating, and culturally biased moral psychology evaluation of LLMs",
     "aiDisclosure": "Analytical perspectives are AI-generated interpretations structured around disciplinary lenses. No human expert panel was convened. All quantitative data and statistical analyses are computationally derived from the source benchmarks.",
